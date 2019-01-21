@@ -1,17 +1,21 @@
 # Readme
-This is an unoficial Windows Client for https://teampasswordmanager.com/.
+This is an unoficial Windows Client for https://teampasswordmanager.com/ (TPM).
 Use at your own risk!
 
 # Requirements
-* Pro version to be able to access the API.
-* Enabled API access to your team password manager.
+* Pro version of TPM to be able to access the API.
+* Enabled TPM API access to your team password manager.
 
 # Features
 * Search tree and list entries easily
-* Autostart
-* Ability to paste information using sendkeys (e.g. login as windows user in a teamviewer session)
-* Library provides controls which can be implemented in other applications (even the full UI)
-* Clipboard managemer which is able to copy username and password (replace username after first paste action)
+* Different list styles selectable
+* Autostart possible (using windows task scheduler logon option)
+* Portable
+* Working API Access to basic functions needed for UI
+* Full access to UI controls (use it in your own application if you want to)
+* Possibility to enable clipboard posting using sendkeys (to avoid copy/paste limitations)
+* Directly send a password to a selected application
+* Clipboard management which is able to handle multiple paste operations (like first paste is username, second is password, ...)
 
 # GoodToKnow
 This project is still in beta phase and there are some things missing like:

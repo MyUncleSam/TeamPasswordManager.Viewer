@@ -73,6 +73,16 @@ namespace TeamPassword.Library.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_landscape_go {
+            get {
+                object obj = ResourceManager.GetObject("img_landscape_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap klipper_dock {
             get {
                 object obj = ResourceManager.GetObject("klipper_dock", resourceCulture);

@@ -34,8 +34,11 @@
 			this.pbClipboard = new System.Windows.Forms.PictureBox();
 			this.ilMain = new System.Windows.Forms.ImageList(this.components);
 			this.pbPassShowHide = new System.Windows.Forms.PictureBox();
+			this.pbSendApplication = new System.Windows.Forms.PictureBox();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.pbClipboard)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbPassShowHide)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbSendApplication)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tbMain
@@ -45,7 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbMain.Location = new System.Drawing.Point(0, 0);
 			this.tbMain.Name = "tbMain";
-			this.tbMain.Size = new System.Drawing.Size(150, 20);
+			this.tbMain.Size = new System.Drawing.Size(156, 20);
 			this.tbMain.TabIndex = 0;
 			this.tbMain.Click += new System.EventHandler(this.tbMain_Click);
 			this.tbMain.TextChanged += new System.EventHandler(this.tbMain_TextChanged);
@@ -56,13 +59,14 @@
 			this.pbClipboard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pbClipboard.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pbClipboard.Location = new System.Drawing.Point(156, 2);
+			this.pbClipboard.Location = new System.Drawing.Point(162, 2);
 			this.pbClipboard.Name = "pbClipboard";
 			this.pbClipboard.Size = new System.Drawing.Size(16, 16);
 			this.pbClipboard.TabIndex = 1;
 			this.pbClipboard.TabStop = false;
+			this.toolTip1.SetToolTip(this.pbClipboard, "copy text to clipboard");
 			this.pbClipboard.Click += new System.EventHandler(this.pbClipboard_Click);
-			this.pbClipboard.MouseEnter += new System.EventHandler(this.pbClipboard_MouseEnter);
+			this.pbClipboard.MouseEnter += new System.EventHandler(this.picturebox_MouseEnter);
 			// 
 			// ilMain
 			// 
@@ -71,34 +75,52 @@
 			this.ilMain.Images.SetKeyName(0, "clipboard");
 			this.ilMain.Images.SetKeyName(1, "success");
 			this.ilMain.Images.SetKeyName(2, "showhide");
+			this.ilMain.Images.SetKeyName(3, "appsend");
 			// 
 			// pbPassShowHide
 			// 
 			this.pbPassShowHide.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pbPassShowHide.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pbPassShowHide.Location = new System.Drawing.Point(134, 2);
+			this.pbPassShowHide.Location = new System.Drawing.Point(140, 2);
 			this.pbPassShowHide.Name = "pbPassShowHide";
 			this.pbPassShowHide.Size = new System.Drawing.Size(16, 16);
 			this.pbPassShowHide.TabIndex = 2;
 			this.pbPassShowHide.TabStop = false;
+			this.toolTip1.SetToolTip(this.pbPassShowHide, "show/hide password");
 			this.pbPassShowHide.Click += new System.EventHandler(this.pbPassShowHide_Click);
 			this.pbPassShowHide.DoubleClick += new System.EventHandler(this.pbPassShowHide_Click);
+			// 
+			// pbSendApplication
+			// 
+			this.pbSendApplication.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pbSendApplication.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pbSendApplication.Location = new System.Drawing.Point(184, 4);
+			this.pbSendApplication.Name = "pbSendApplication";
+			this.pbSendApplication.Size = new System.Drawing.Size(16, 16);
+			this.pbSendApplication.TabIndex = 3;
+			this.pbSendApplication.TabStop = false;
+			this.toolTip1.SetToolTip(this.pbSendApplication, "send text using sendkeys to a selected application");
+			this.pbSendApplication.Click += new System.EventHandler(this.pbSendApplication_Click);
+			this.pbSendApplication.MouseEnter += new System.EventHandler(this.picturebox_MouseEnter);
 			// 
 			// TextBoxEx
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Transparent;
+			this.Controls.Add(this.pbSendApplication);
 			this.Controls.Add(this.pbPassShowHide);
 			this.Controls.Add(this.pbClipboard);
 			this.Controls.Add(this.tbMain);
 			this.MaximumSize = new System.Drawing.Size(1000000000, 20);
 			this.MinimumSize = new System.Drawing.Size(50, 20);
 			this.Name = "TextBoxEx";
-			this.Size = new System.Drawing.Size(172, 20);
+			this.Size = new System.Drawing.Size(203, 20);
 			((System.ComponentModel.ISupportInitialize)(this.pbClipboard)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbPassShowHide)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbSendApplication)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -110,5 +132,7 @@
 		private System.Windows.Forms.PictureBox pbClipboard;
 		private System.Windows.Forms.ImageList ilMain;
 		private System.Windows.Forms.PictureBox pbPassShowHide;
+		private System.Windows.Forms.PictureBox pbSendApplication;
+		private System.Windows.Forms.ToolTip toolTip1;
 	}
 }

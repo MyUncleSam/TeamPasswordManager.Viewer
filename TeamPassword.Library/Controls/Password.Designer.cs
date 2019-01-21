@@ -41,12 +41,12 @@
 			this.lblNotes = new System.Windows.Forms.Label();
 			this.tbNotes = new System.Windows.Forms.TextBox();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
 			this.tbExpiryDate = new TeamPassword.Library.Controls.TextBoxEx();
 			this.tbPassword = new TeamPassword.Library.Controls.TextBoxEx();
 			this.tbEmail = new TeamPassword.Library.Controls.TextBoxEx();
 			this.tbUsername = new TeamPassword.Library.Controls.TextBoxEx();
 			this.tbAccess = new TeamPassword.Library.Controls.TextBoxEx();
+			this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.olvOther)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).BeginInit();
 			this.SuspendLayout();
@@ -163,19 +163,6 @@
 			this.tbNotes.Size = new System.Drawing.Size(383, 167);
 			this.tbNotes.TabIndex = 11;
 			// 
-			// pbCopyUsernamePassword
-			// 
-			this.pbCopyUsernamePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbCopyUsernamePassword.Image = global::TeamPassword.Library.Properties.Resources.userpass;
-			this.pbCopyUsernamePassword.Location = new System.Drawing.Point(362, 139);
-			this.pbCopyUsernamePassword.Name = "pbCopyUsernamePassword";
-			this.pbCopyUsernamePassword.Size = new System.Drawing.Size(24, 24);
-			this.pbCopyUsernamePassword.TabIndex = 13;
-			this.pbCopyUsernamePassword.TabStop = false;
-			this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
-			this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
-			this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
-			// 
 			// tbExpiryDate
 			// 
 			this.tbExpiryDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -250,6 +237,19 @@
 			this.tbAccess.Size = new System.Drawing.Size(294, 20);
 			this.tbAccess.TabIndex = 1;
 			this.tbAccess.UseSystemPasswordChar = false;
+			// 
+			// pbCopyUsernamePassword
+			// 
+			this.pbCopyUsernamePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pbCopyUsernamePassword.Image = global::TeamPassword.Library.Properties.Resources.userpass;
+			this.pbCopyUsernamePassword.Location = new System.Drawing.Point(362, 139);
+			this.pbCopyUsernamePassword.Name = "pbCopyUsernamePassword";
+			this.pbCopyUsernamePassword.Size = new System.Drawing.Size(24, 24);
+			this.pbCopyUsernamePassword.TabIndex = 13;
+			this.pbCopyUsernamePassword.TabStop = false;
+			this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
+			this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
+			this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
 			// 
 			// Password
 			// 
