@@ -30,3 +30,6 @@ This project is still in beta phase and there are some things missing like:
 * ViewStyle (style of your password list)
 ## Application
 * HidePasswordsAfterSeconds (if password is revealed in the UI it is hidden after these amount of seconds - or not if 0)
+
+# Screenshot
+![](https://raw.githubusercontent.com/MyUncleSam/TeamPasswordManager.Viewer/master/Screenshot1.png)
