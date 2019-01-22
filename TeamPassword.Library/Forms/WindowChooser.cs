@@ -28,14 +28,6 @@ namespace TeamPassword.Library.Forms
 		{
 			InitializeComponent();
 
-			RowBorderDecoration rbd = new RowBorderDecoration();
-			rbd.BorderPen = new Pen(Color.FromArgb(128, Color.LightSeaGreen), 2);
-			rbd.BoundsPadding = new Size(1, 1);
-			rbd.CornerRounding = 4.0f;
-
-			olvMain.HotItemStyle = new HotItemStyle();
-			olvMain.HotItemStyle.Decoration = rbd;
-
 			colName.ImageGetter = delegate(object row)
 			{
 				ListEntry curEntry = (ListEntry)row;
@@ -45,8 +37,14 @@ namespace TeamPassword.Library.Forms
 			ImageList il = new ImageList();
 			List<ListEntry> toShow = new List<ListEntry>();
 
+            int curSessionId = Process.GetCurrentProcess().SessionId;
+
 			foreach (Process proc in Process.GetProcesses()
-				.Where(w => !string.IsNullOrWhiteSpace(w.MainWindowTitle) && !IgnoreProgramNames.Any(a => a.Equals(w.ProcessName, StringComparison.OrdinalIgnoreCase)))
+				.Where(w => 
+                    !string.IsNullOrWhiteSpace(w.MainWindowTitle) 
+                    && (w.MainWindowHandle != IntPtr.Zero && w.MainWindowHandle != null)
+                    && w.SessionId.Equals(curSessionId)
+                    && !IgnoreProgramNames.Any(a => a.Equals(w.ProcessName, StringComparison.OrdinalIgnoreCase)))
 				.OrderBy(o => o.ProcessName))
 			{
 				toShow.Add(
