@@ -20,8 +20,13 @@ namespace TeamPassword.Library.Forms
 
 		private List<string> IgnoreProgramNames = new List<string>()
 		{
+            "TeamPassword.Viewer",
 			"explorer",
-			"ShellExperienceHost"
+			"ShellExperienceHost",
+            "MicrosoftEdgeCP",
+            "ApplicationFrameHost",
+            "WinStore.App",
+            "SystemSettings"
 		};
 
 		public WindowChooser()
