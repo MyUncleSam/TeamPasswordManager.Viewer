@@ -23,7 +23,6 @@ namespace TeamPassword.Library.Forms
             "TeamPassword.Viewer",
 			"explorer",
 			"ShellExperienceHost",
-            "MicrosoftEdgeCP",
             "ApplicationFrameHost",
             "WinStore.App",
             "SystemSettings"
