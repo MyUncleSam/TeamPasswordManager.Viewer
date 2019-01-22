@@ -15,7 +15,9 @@ namespace TeamPassword.Library.Controls
 		public new event TbFilterChanged FilterChanged;
 		public new event TbFilterChanged FilterChangedDelayed;
 
-		private DateTime lastInput = DateTime.Now;
+        public bool RecursiveCheckbox { get; set; }
+
+        private DateTime lastInput = DateTime.Now;
 		private const int delay = 250; // delay in ms
 		private Timer delayTimer = new Timer();
 
