@@ -1,7 +1,10 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +12,9 @@ namespace TeamPassword.Library
 {
     public static class Extensions
     {
+        [DllImport("Kernel32.dll")]
+        private static extern uint QueryFullProcessImageName([In] IntPtr hProcess, [In] uint dwFlags, [Out] StringBuilder lpExeName, [In, Out] ref uint lpdwSize);
+
         public static List<int> OneToNumber(this int endNUmber)
         {
             List<int> retList = new List<int>();
@@ -138,5 +144,16 @@ namespace TeamPassword.Library
 				user_permission = rol.user_permission
 			};
 		}
-	}
+
+        public static string GetMainModuleFileName(this Process process, int buffer = 1024)
+        {
+            var fileNameBuilder = new StringBuilder(buffer);
+            uint bufferLength = (uint)fileNameBuilder.Capacity + 1;
+
+            if (QueryFullProcessImageName(process.Handle, 0, fileNameBuilder, ref bufferLength) != 0)
+                return fileNameBuilder.ToString();
+            else
+                return null;
+        }
+    }
 }

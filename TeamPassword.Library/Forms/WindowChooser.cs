@@ -63,7 +63,9 @@ namespace TeamPassword.Library.Forms
 
 				try
 				{
-					il.Images.Add(proc.Id.ToString(), Icon.ExtractAssociatedIcon(proc.MainModule.FileName).ToBitmap());
+                    //il.Images.Add(proc.Id.ToString(), proc.GetIcon().ToBitmap());
+                    //il.Images.Add(proc.Id.ToString(), Icon.ExtractAssociatedIcon(proc.MainModule.FileName).ToBitmap());
+                    il.Images.Add(proc.Id.ToString(), Icon.ExtractAssociatedIcon(proc.GetMainModuleFileName()).ToBitmap());
 				}
 				catch { }
 			}
