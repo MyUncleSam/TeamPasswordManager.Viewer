@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TeamPassword.Library
 {
@@ -154,6 +155,25 @@ namespace TeamPassword.Library
                 return fileNameBuilder.ToString();
             else
                 return null;
+        }
+
+        public static void SendKeysEx(this string toSend)
+        {
+            StringBuilder sb = new StringBuilder();
+            char[] specialChars = new char[]
+            {
+                '{', '}', '(', ')', '+', '^'
+            };
+
+            foreach (char curChar in toSend)
+            {
+                if (specialChars.Contains(curChar))
+                    sb.Append(string.Format("{{{0}}}", curChar));
+                else
+                    sb.Append(curChar);
+            }
+
+            SendKeys.Send(sb.ToString());
         }
     }
 }

@@ -77,8 +77,8 @@ namespace TeamPassword.Library.Functions
 
 		private void skSendSendkeys()
 		{
-			if (UseSendkeys)
-				SendKeys.Send(Clipboard.GetText());
+            if (UseSendkeys && !string.IsNullOrWhiteSpace(Clipboard.GetText()))
+                Clipboard.GetText().SendKeysEx();
 
 			TextPasted();
 		}
