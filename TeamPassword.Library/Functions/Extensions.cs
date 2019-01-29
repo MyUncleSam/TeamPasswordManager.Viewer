@@ -162,7 +162,7 @@ namespace TeamPassword.Library
             StringBuilder sb = new StringBuilder();
             char[] specialChars = new char[]
             {
-                '{', '}', '(', ')', '+', '^'
+                '{', '}', '(', ')', '+', '^', '~', '%'
             };
 
             foreach (char curChar in toSend)
