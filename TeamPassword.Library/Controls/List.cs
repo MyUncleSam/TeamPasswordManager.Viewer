@@ -29,9 +29,66 @@ namespace TeamPassword.Library.Controls
 		public List()
         {
             InitializeComponent();
+
+            //ContextMenu cm = new ContextMenu();
+
+            //MenuItem miCopyPassword = new MenuItem("Copy password");
+
+            //cm.MenuItems.Add(miCopyPassword);
+
+            //olvMain.ContextMenu = cm;
         }
 
-		public void FillList(Instance _inst, int projectId)
+        private void olvMain_CellRightClick(object sender, CellRightClickEventArgs e)
+        {
+            if (e.Model == null)
+                return;
+
+            ObjectListView olv = (ObjectListView)sender;
+            Objects.ListEntryEx selEntry = (Objects.ListEntryEx)e.Model;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+
+            ToolStripMenuItem miCopyPassword = new ToolStripMenuItem("copy password");
+            miCopyPassword.Click += MiCopyPassword_Click;
+            miCopyPassword.Tag = selEntry;
+
+            ToolStripMenuItem miCopyUsername = new ToolStripMenuItem("copy username");
+            miCopyUsername.Click += MiCopyUsername_Click;
+            miCopyUsername.Tag = selEntry;
+
+            //ToolStripMenuItem miCopyUsernamePassword = new ToolStripMenuItem("copy username & password");
+            //miCopyUsernamePassword.Click += MiCopyUsernamePassword_Click;
+            //miCopyUsernamePassword.Tag = selEntry;
+
+            cms.Items.Add(miCopyUsername);
+            cms.Items.Add(miCopyPassword);
+            //cms.Items.Add("-");
+            //cms.Items.Add(miCopyUsernamePassword);
+
+            e.MenuStrip = cms;
+        }
+
+        private void MiCopyUsername_Click(object sender, EventArgs e)
+        {
+            Objects.ListEntryEx selEntry = (Objects.ListEntryEx)((ToolStripMenuItem)sender).Tag;
+
+            Functions.ClipboardManager.GetInstance().SetText(selEntry.username);
+        }
+
+        private void MiCopyPassword_Click(object sender, EventArgs e)
+        {
+            Objects.ListEntryEx selEntry = (Objects.ListEntryEx)((ToolStripMenuItem)sender).Tag;
+
+            string pw = inst.PasswordInfo.GetPassword(selEntry.id).password;
+
+            if (string.IsNullOrWhiteSpace(pw))
+                MessageBox.Show("This entry has no password (copy canceled)", "no password", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1);
+            else
+                Functions.ClipboardManager.GetInstance().SetText(pw);
+        }
+
+        public void FillList(Instance _inst, int projectId)
 		{
 			inst = _inst;
 
@@ -133,9 +190,9 @@ namespace TeamPassword.Library.Controls
 
 			olvMain.AdditionalFilter = filter;
 		}
-	}
+    }
 
-	public delegate void ListSelectionChanged(object source, ListSelectionChangedEventArgs e);
+    public delegate void ListSelectionChanged(object source, ListSelectionChangedEventArgs e);
 	public class ListSelectionChangedEventArgs : EventArgs
 	{
 		public Objects.ListEntryEx ListEntry { get; set; }
