@@ -157,7 +157,7 @@ namespace TeamPassword.Library
                 return null;
         }
 
-        public static void SendKeysEx(this string toSend)
+        private static string EscapeForSendKeys(string text)
         {
             StringBuilder sb = new StringBuilder();
             char[] specialChars = new char[]
@@ -165,7 +165,7 @@ namespace TeamPassword.Library
                 '{', '}', '(', ')', '+', '^', '~', '%'
             };
 
-            foreach (char curChar in toSend)
+            foreach (char curChar in text)
             {
                 if (specialChars.Contains(curChar))
                     sb.Append(string.Format("{{{0}}}", curChar));
@@ -173,7 +173,60 @@ namespace TeamPassword.Library
                     sb.Append(curChar);
             }
 
-            SendKeys.Send(sb.ToString());
+            return sb.ToString();
+        }
+
+        public static void SendKeysEx(this string toSend, bool sendWait = false)
+        {
+            SendKeys.Flush();
+
+            if (sendWait)
+                SendKeys.SendWait(EscapeForSendKeys(toSend));
+            else
+                SendKeys.Send(EscapeForSendKeys(toSend));
+        }
+
+        private static Timer SendDelayTimer = new Timer();
+        private static string SendDelayToSend = null;
+        private static bool SendDelaySendWait = false;
+
+        public static void SendKeysExDelay(this string toSend, int keyDelayMs, bool sendWait = false)
+        {
+            try { SendDelayTimer.Stop(); } catch { }
+
+            if(keyDelayMs <= 0)
+            {
+                toSend.SendKeysEx(sendWait);
+                return;
+            }
+
+            SendDelayToSend = toSend;
+            SendDelaySendWait = sendWait;
+
+            SendDelayTimer = new Timer();
+            SendDelayTimer.Interval = keyDelayMs;
+            SendDelayTimer.Enabled = true;
+            SendDelayTimer.Tick += SendDelayTimer_Tick;
+            SendDelayTimer.Start();
+        }
+
+        private static void SendDelayTimer_Tick(object sender, EventArgs e)
+        {
+            SendDelayTimer.Stop();
+            if (string.IsNullOrWhiteSpace(SendDelayToSend))
+                return;
+
+            string sendKey = SendDelayToSend[0].ToString();
+            SendDelayToSend = SendDelayToSend.Substring(1);
+
+            SendKeys.Flush();
+
+            if (SendDelaySendWait)
+                SendKeys.SendWait(EscapeForSendKeys(sendKey));
+            else
+                SendKeys.Send(EscapeForSendKeys(sendKey));
+
+            SendDelayTimer.Start();
         }
     }
 }

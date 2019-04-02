@@ -188,7 +188,7 @@ namespace TeamPassword.Library.Controls
 					SetForegroundWindow(handle);
 
                     if (!string.IsNullOrWhiteSpace(textToSend))
-                        textToSend.SendKeysEx();
+                        textToSend.SendKeysExDelay(Properties.Settings.Default.SendDelay, Properties.Settings.Default.SendWait);
 				}
 				catch(Exception ex)
 				{
