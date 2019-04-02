@@ -25,7 +25,7 @@ namespace TeamPassword.Library.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int SendDelay {
             get {
                 return ((int)(this["SendDelay"]));
