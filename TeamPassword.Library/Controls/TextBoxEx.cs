@@ -253,9 +253,14 @@ namespace TeamPassword.Library.Controls
 		{
 			tbMain.SelectAll();
 		}
-	}
 
-	enum ShowWindowCommands
+        private void tbMain_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
+    }
+
+    enum ShowWindowCommands
 	{
 		/// <summary>
 		/// Hides the window and activates another window.

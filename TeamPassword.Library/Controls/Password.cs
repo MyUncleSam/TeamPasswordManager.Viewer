@@ -51,7 +51,7 @@ namespace TeamPassword.Library.Controls
 				tbEmail.Text = null;
 				tbPassword.Text = null;
 				tbExpiryDate.Text = null;
-				tbNotes.Text = null;
+                rtbNotes.Text = null;
 				olvOther.ClearObjects();
 				this.Enabled = false;
 				return;
@@ -63,7 +63,7 @@ namespace TeamPassword.Library.Controls
 			tbEmail.Text = PasswordEntry.email;
 			tbPassword.Text = PasswordEntry.password;
 			tbExpiryDate.Text = PasswordEntry.expiry_date;
-			tbNotes.Text = PasswordEntry.notes.Replace("\n", Environment.NewLine);
+            rtbNotes.Text = PasswordEntry.notes.Replace("\n", Environment.NewLine);
 
 			List<PasswordOtherEntry> otherEntries = new List<PasswordOtherEntry>();
 			IEnumerable<System.Reflection.PropertyInfo> props = PasswordEntry.GetType().GetProperties().Where(w => w.Name.StartsWith("custom_field"));
@@ -124,5 +124,10 @@ namespace TeamPassword.Library.Controls
 			else
 				pbCopyUsernamePassword.Cursor = Cursors.Hand;
 		}
-	}
+
+        private void rtbNotes_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
+    }
 }
