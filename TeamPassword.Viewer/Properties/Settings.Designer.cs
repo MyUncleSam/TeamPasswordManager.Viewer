@@ -105,7 +105,7 @@ namespace TeamPassword.Viewer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Shift+F2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Insert")]
         public string SendKeysKey {
             get {
                 return ((string)(this["SendKeysKey"]));

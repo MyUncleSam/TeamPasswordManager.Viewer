@@ -24,7 +24,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="SendKeysKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Shift+F2</Value>
+      <Value Profile="(Default)">Insert</Value>
     </Setting>
   </Settings>
 </SettingsFile>

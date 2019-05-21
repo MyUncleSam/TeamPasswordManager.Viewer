@@ -15,6 +15,7 @@ namespace TeamPassword.Library.Controls
 		public Instance inst { get; private set; }
 		public Objects.PasswordEntry PasswordEntry { get; set; }
 		private int _HidePasswordsAfterSeconds = 0;
+        private Uri _ExternalLinkAddress = null;
 
 		public Password()
         {
@@ -54,6 +55,7 @@ namespace TeamPassword.Library.Controls
                 rtbNotes.Text = null;
 				olvOther.ClearObjects();
 				this.Enabled = false;
+                _ExternalLinkAddress = null;
 				return;
 			}
 			
@@ -64,6 +66,17 @@ namespace TeamPassword.Library.Controls
 			tbPassword.Text = PasswordEntry.password;
 			tbExpiryDate.Text = PasswordEntry.expiry_date;
             rtbNotes.Text = PasswordEntry.notes.Replace("\n", Environment.NewLine);
+
+            // try to create password uri
+            _ExternalLinkAddress = null;
+            Uri.TryCreate(inst.LoginInfo.URL, string.Format("index.php/pwd/view/{0}", passwordId), out _ExternalLinkAddress);
+
+            pbOpenLink.Enabled = _ExternalLinkAddress != null;
+
+            if (_ExternalLinkAddress == null)
+                pbOpenLink.Cursor = Cursors.No;
+            else
+                pbOpenLink.Cursor = Cursors.Hand;
 
 			List<PasswordOtherEntry> otherEntries = new List<PasswordOtherEntry>();
 			IEnumerable<System.Reflection.PropertyInfo> props = PasswordEntry.GetType().GetProperties().Where(w => w.Name.StartsWith("custom_field"));
@@ -128,6 +141,14 @@ namespace TeamPassword.Library.Controls
         private void rtbNotes_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(e.LinkText);
+        }
+
+        private void pbOpenLink_Click(object sender, EventArgs e)
+        {
+            if (_ExternalLinkAddress == null)
+                return;
+
+            System.Diagnostics.Process.Start(_ExternalLinkAddress.AbsoluteUri);
         }
     }
 }

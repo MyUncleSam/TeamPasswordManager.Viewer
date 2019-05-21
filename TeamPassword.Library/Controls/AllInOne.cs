@@ -14,6 +14,7 @@ namespace TeamPassword.Library.Controls
 	{
 		public Instance inst { get; private set; }
 		private int _HidePasswordsAfterSeconds = 0;
+        private Uri _ExternalLinkAddress = null;
 
 		public View ViewStyle
 		{
@@ -53,19 +54,22 @@ namespace TeamPassword.Library.Controls
 
 		private void treeList_SelectionChanged(object source, TreeListSelectionChangedEventArgs e)
 		{
+            // reset current view (this just removes all entries)
             passwordDetails.FillPassword(inst, 0);
+            _ExternalLinkAddress = null;
 
             if (e.TreeNode.ProjectID > 0)
             {
                 passwordList.FillList(inst, e.TreeNode.ProjectID);
-                return;
+                Uri.TryCreate(inst.LoginInfo.URL, string.Format("index.php/prj/view/{0}", e.TreeNode.ProjectID), out _ExternalLinkAddress);
             }
-
-            if (e.TreeNode.ProjectID <= 0)
+            else
             {
                 passwordList.FillList(inst, e.TreeNode.NodeType);
             }
-		}
+
+            pbOpenLink.Enabled = _ExternalLinkAddress != null;
+        }
 
 		private void passwordList_ListSelectionChanged(object source, ListSelectionChangedEventArgs e)
 		{
@@ -91,6 +95,22 @@ namespace TeamPassword.Library.Controls
             {
                 passwordList.ViewStyle = View.Details;
             }
+        }
+
+        private void pbOpenLink_MouseEnter(object sender, EventArgs e)
+        {
+            if (_ExternalLinkAddress == null)
+                pbOpenLink.Cursor = Cursors.No;
+            else
+                pbOpenLink.Cursor = Cursors.Hand;
+        }
+
+        private void pbOpenLink_Click(object sender, EventArgs e)
+        {
+            if (_ExternalLinkAddress == null)
+                return;
+
+            System.Diagnostics.Process.Start(_ExternalLinkAddress.AbsoluteUri);
         }
     }
 }

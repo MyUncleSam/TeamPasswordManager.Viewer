@@ -32,10 +32,11 @@
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.scDetails = new System.Windows.Forms.SplitContainer();
             this.cbViewStyle = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.treeList = new TeamPassword.Library.Controls.TreeList();
             this.passwordList = new TeamPassword.Library.Controls.List();
             this.passwordDetails = new TeamPassword.Library.Controls.Password();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pbOpenLink = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -44,6 +45,7 @@
             this.scDetails.Panel1.SuspendLayout();
             this.scDetails.Panel2.SuspendLayout();
             this.scDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).BeginInit();
             this.SuspendLayout();
             // 
             // scMain
@@ -75,6 +77,7 @@
             // 
             // scDetails.Panel1
             // 
+            this.scDetails.Panel1.Controls.Add(this.pbOpenLink);
             this.scDetails.Panel1.Controls.Add(this.cbViewStyle);
             this.scDetails.Panel1.Controls.Add(this.passwordList);
             // 
@@ -139,6 +142,20 @@
             this.passwordDetails.Size = new System.Drawing.Size(433, 575);
             this.passwordDetails.TabIndex = 0;
             // 
+            // pbOpenLink
+            // 
+            this.pbOpenLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbOpenLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOpenLink.Image = global::TeamPassword.Library.Properties.Resources.world;
+            this.pbOpenLink.Location = new System.Drawing.Point(314, 549);
+            this.pbOpenLink.Name = "pbOpenLink";
+            this.pbOpenLink.Size = new System.Drawing.Size(24, 24);
+            this.pbOpenLink.TabIndex = 17;
+            this.pbOpenLink.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbOpenLink, "Show project in the web interface.");
+            this.pbOpenLink.Click += new System.EventHandler(this.pbOpenLink_Click);
+            this.pbOpenLink.MouseEnter += new System.EventHandler(this.pbOpenLink_MouseEnter);
+            // 
             // AllInOne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +172,7 @@
             this.scDetails.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scDetails)).EndInit();
             this.scDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -168,5 +186,6 @@
 		private Password passwordDetails;
         private System.Windows.Forms.ComboBox cbViewStyle;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox pbOpenLink;
     }
 }

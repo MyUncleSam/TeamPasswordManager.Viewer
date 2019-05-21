@@ -40,17 +40,19 @@
             this.olvColumnValue = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.lblNotes = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbOpenLink = new System.Windows.Forms.PictureBox();
+            this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
             this.tbExpiryDate = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbPassword = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbEmail = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbUsername = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbAccess = new TeamPassword.Library.Controls.TextBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.olvOther)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAccess
@@ -151,19 +153,6 @@
             this.lblNotes.TabIndex = 10;
             this.lblNotes.Text = "Notes";
             // 
-            // pbCopyUsernamePassword
-            // 
-            this.pbCopyUsernamePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbCopyUsernamePassword.Image = global::TeamPassword.Library.Properties.Resources.userpass;
-            this.pbCopyUsernamePassword.Location = new System.Drawing.Point(362, 139);
-            this.pbCopyUsernamePassword.Name = "pbCopyUsernamePassword";
-            this.pbCopyUsernamePassword.Size = new System.Drawing.Size(24, 24);
-            this.pbCopyUsernamePassword.TabIndex = 13;
-            this.pbCopyUsernamePassword.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
-            this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
-            this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
-            // 
             // rtbNotes
             // 
             this.rtbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -191,6 +180,33 @@
             this.panel1.Size = new System.Drawing.Size(383, 167);
             this.panel1.TabIndex = 15;
             // 
+            // pbOpenLink
+            // 
+            this.pbOpenLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbOpenLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOpenLink.Image = global::TeamPassword.Library.Properties.Resources.world;
+            this.pbOpenLink.Location = new System.Drawing.Point(332, 139);
+            this.pbOpenLink.Name = "pbOpenLink";
+            this.pbOpenLink.Size = new System.Drawing.Size(24, 24);
+            this.pbOpenLink.TabIndex = 16;
+            this.pbOpenLink.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbOpenLink, "Show password in the web interface.");
+            this.pbOpenLink.Click += new System.EventHandler(this.pbOpenLink_Click);
+            // 
+            // pbCopyUsernamePassword
+            // 
+            this.pbCopyUsernamePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbCopyUsernamePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCopyUsernamePassword.Image = global::TeamPassword.Library.Properties.Resources.userpass;
+            this.pbCopyUsernamePassword.Location = new System.Drawing.Point(362, 139);
+            this.pbCopyUsernamePassword.Name = "pbCopyUsernamePassword";
+            this.pbCopyUsernamePassword.Size = new System.Drawing.Size(24, 24);
+            this.pbCopyUsernamePassword.TabIndex = 13;
+            this.pbCopyUsernamePassword.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
+            this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
+            this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
+            // 
             // tbExpiryDate
             // 
             this.tbExpiryDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -201,7 +217,7 @@
             this.tbExpiryDate.MaximumSize = new System.Drawing.Size(1000000000, 20);
             this.tbExpiryDate.MinimumSize = new System.Drawing.Size(50, 20);
             this.tbExpiryDate.Name = "tbExpiryDate";
-            this.tbExpiryDate.ReadOnly = true;
+            this.tbExpiryDate.ReadOnly = false;
             this.tbExpiryDate.Size = new System.Drawing.Size(294, 20);
             this.tbExpiryDate.TabIndex = 9;
             this.tbExpiryDate.UseSystemPasswordChar = false;
@@ -216,7 +232,7 @@
             this.tbPassword.MaximumSize = new System.Drawing.Size(1000000000, 20);
             this.tbPassword.MinimumSize = new System.Drawing.Size(50, 20);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.ReadOnly = true;
+            this.tbPassword.ReadOnly = false;
             this.tbPassword.Size = new System.Drawing.Size(294, 20);
             this.tbPassword.TabIndex = 5;
             this.tbPassword.UseSystemPasswordChar = false;
@@ -231,7 +247,7 @@
             this.tbEmail.MaximumSize = new System.Drawing.Size(1000000000, 20);
             this.tbEmail.MinimumSize = new System.Drawing.Size(50, 20);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.ReadOnly = true;
+            this.tbEmail.ReadOnly = false;
             this.tbEmail.Size = new System.Drawing.Size(294, 20);
             this.tbEmail.TabIndex = 7;
             this.tbEmail.UseSystemPasswordChar = false;
@@ -246,7 +262,7 @@
             this.tbUsername.MaximumSize = new System.Drawing.Size(1000000000, 20);
             this.tbUsername.MinimumSize = new System.Drawing.Size(50, 20);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.ReadOnly = true;
+            this.tbUsername.ReadOnly = false;
             this.tbUsername.Size = new System.Drawing.Size(294, 20);
             this.tbUsername.TabIndex = 3;
             this.tbUsername.UseSystemPasswordChar = false;
@@ -261,7 +277,7 @@
             this.tbAccess.MaximumSize = new System.Drawing.Size(1000000000, 20);
             this.tbAccess.MinimumSize = new System.Drawing.Size(50, 20);
             this.tbAccess.Name = "tbAccess";
-            this.tbAccess.ReadOnly = true;
+            this.tbAccess.ReadOnly = false;
             this.tbAccess.Size = new System.Drawing.Size(294, 20);
             this.tbAccess.TabIndex = 1;
             this.tbAccess.UseSystemPasswordChar = false;
@@ -271,6 +287,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.pbOpenLink);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pbCopyUsernamePassword);
             this.Controls.Add(this.tbExpiryDate);
@@ -288,8 +305,9 @@
             this.Name = "Password";
             this.Size = new System.Drawing.Size(389, 583);
             ((System.ComponentModel.ISupportInitialize)(this.olvOther)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +333,6 @@
 		private System.Windows.Forms.PictureBox pbCopyUsernamePassword;
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbOpenLink;
     }
 }
