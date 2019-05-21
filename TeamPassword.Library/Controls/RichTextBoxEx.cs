@@ -49,9 +49,17 @@ namespace TeamPassword.Library.Controls
                 rtbMain.Visible = !value;
 
                 if (value)
+                {
+                    tbPassword.Show();
+                    rtbMain.Hide();
                     tbPassword.BringToFront();
+                }
                 else
+                {
+                    tbPassword.Hide();
+                    rtbMain.Show();
                     rtbMain.BringToFront();
+                }
             }
         }
 

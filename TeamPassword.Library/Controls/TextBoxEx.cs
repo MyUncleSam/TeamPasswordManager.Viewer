@@ -33,6 +33,7 @@ namespace TeamPassword.Library.Controls
 		private bool isPwVisible = false;
 		private bool isPassword = false;
 		private Timer HideTimer = new Timer();
+        private bool IsReadOnly = true;
 
 		public bool UseSystemPasswordChar
 		{
@@ -88,11 +89,12 @@ namespace TeamPassword.Library.Controls
 		{
 			get
 			{
-				return tbMain.ReadOnly;
+				return IsReadOnly;
 			}
 			set
 			{
-				tbMain.ReadOnly = value;
+                IsReadOnly = value;
+				tbMain.ReadOnly = IsReadOnly;
 				tbMain.BackColor = SystemColors.Window;
 			}
 		}

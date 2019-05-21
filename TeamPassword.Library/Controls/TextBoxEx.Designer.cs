@@ -30,30 +30,16 @@
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextBoxEx));
-            this.pbClipboard = new System.Windows.Forms.PictureBox();
             this.ilMain = new System.Windows.Forms.ImageList(this.components);
-            this.pbPassShowHide = new System.Windows.Forms.PictureBox();
-            this.pbSendApplication = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pbSendApplication = new System.Windows.Forms.PictureBox();
+            this.pbPassShowHide = new System.Windows.Forms.PictureBox();
+            this.pbClipboard = new System.Windows.Forms.PictureBox();
             this.tbMain = new TeamPassword.Library.Controls.RichTextBoxEx();
-            ((System.ComponentModel.ISupportInitialize)(this.pbClipboard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPassShowHide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendApplication)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPassShowHide)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClipboard)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbClipboard
-            // 
-            this.pbClipboard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbClipboard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClipboard.Location = new System.Drawing.Point(162, 2);
-            this.pbClipboard.Name = "pbClipboard";
-            this.pbClipboard.Size = new System.Drawing.Size(16, 16);
-            this.pbClipboard.TabIndex = 1;
-            this.pbClipboard.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbClipboard, "copy text to clipboard");
-            this.pbClipboard.Click += new System.EventHandler(this.pbClipboard_Click);
-            this.pbClipboard.MouseEnter += new System.EventHandler(this.picturebox_MouseEnter);
             // 
             // ilMain
             // 
@@ -63,6 +49,20 @@
             this.ilMain.Images.SetKeyName(1, "success");
             this.ilMain.Images.SetKeyName(2, "showhide");
             this.ilMain.Images.SetKeyName(3, "appsend");
+            // 
+            // pbSendApplication
+            // 
+            this.pbSendApplication.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbSendApplication.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbSendApplication.Location = new System.Drawing.Point(184, 4);
+            this.pbSendApplication.Name = "pbSendApplication";
+            this.pbSendApplication.Size = new System.Drawing.Size(16, 16);
+            this.pbSendApplication.TabIndex = 3;
+            this.pbSendApplication.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbSendApplication, "send text using sendkeys to a selected application");
+            this.pbSendApplication.Click += new System.EventHandler(this.pbSendApplication_Click);
+            this.pbSendApplication.MouseEnter += new System.EventHandler(this.picturebox_MouseEnter);
             // 
             // pbPassShowHide
             // 
@@ -78,19 +78,19 @@
             this.pbPassShowHide.Click += new System.EventHandler(this.pbPassShowHide_Click);
             this.pbPassShowHide.DoubleClick += new System.EventHandler(this.pbPassShowHide_Click);
             // 
-            // pbSendApplication
+            // pbClipboard
             // 
-            this.pbSendApplication.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pbClipboard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbSendApplication.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbSendApplication.Location = new System.Drawing.Point(184, 4);
-            this.pbSendApplication.Name = "pbSendApplication";
-            this.pbSendApplication.Size = new System.Drawing.Size(16, 16);
-            this.pbSendApplication.TabIndex = 3;
-            this.pbSendApplication.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbSendApplication, "send text using sendkeys to a selected application");
-            this.pbSendApplication.Click += new System.EventHandler(this.pbSendApplication_Click);
-            this.pbSendApplication.MouseEnter += new System.EventHandler(this.picturebox_MouseEnter);
+            this.pbClipboard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbClipboard.Location = new System.Drawing.Point(162, 2);
+            this.pbClipboard.Name = "pbClipboard";
+            this.pbClipboard.Size = new System.Drawing.Size(16, 16);
+            this.pbClipboard.TabIndex = 1;
+            this.pbClipboard.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbClipboard, "copy text to clipboard");
+            this.pbClipboard.Click += new System.EventHandler(this.pbClipboard_Click);
+            this.pbClipboard.MouseEnter += new System.EventHandler(this.picturebox_MouseEnter);
             // 
             // tbMain
             // 
@@ -119,9 +119,9 @@
             this.MinimumSize = new System.Drawing.Size(50, 20);
             this.Name = "TextBoxEx";
             this.Size = new System.Drawing.Size(203, 20);
-            ((System.ComponentModel.ISupportInitialize)(this.pbClipboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPassShowHide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendApplication)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPassShowHide)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClipboard)).EndInit();
             this.ResumeLayout(false);
 
 		}
