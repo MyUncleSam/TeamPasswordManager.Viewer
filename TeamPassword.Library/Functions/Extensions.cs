@@ -186,7 +186,7 @@ namespace TeamPassword.Library
                 SendKeys.Send(EscapeForSendKeys(toSend));
         }
 
-        private static Timer SendDelayTimer = new Timer();
+        private static TimerEx SendDelayTimer = new TimerEx();
         private static string SendDelayToSend = null;
         private static bool SendDelaySendWait = false;
 
@@ -194,7 +194,7 @@ namespace TeamPassword.Library
         {
             try { SendDelayTimer.Stop(); } catch { }
 
-            if(keyDelayMs <= 0)
+            if(keyDelayMs <= 0 && Properties.Settings.Default.SendDelayInitial <= 0)
             {
                 toSend.SendKeysEx(sendWait);
                 return;
@@ -203,10 +203,22 @@ namespace TeamPassword.Library
             SendDelayToSend = toSend;
             SendDelaySendWait = sendWait;
 
-            SendDelayTimer = new Timer();
-            SendDelayTimer.Interval = keyDelayMs;
+            SendDelayTimer = new TimerEx();
+
+            if (Properties.Settings.Default.SendDelayInitial > 0 && Properties.Settings.Default.SendDelayInitial > keyDelayMs)
+                SendDelayTimer.Interval = Properties.Settings.Default.SendDelayInitial;
+            else
+                SendDelayTimer.Interval = keyDelayMs;
+
+            SendDelayTimer.IntervalDelayToUse = keyDelayMs;
             SendDelayTimer.Enabled = true;
-            SendDelayTimer.Tick += SendDelayTimer_Tick;
+
+            // if key delay is not wanted but initial delay
+            if (keyDelayMs <= 0)
+                SendDelayTimer.Tick += SendDelayTimer_All; // sends all in one
+            else
+                SendDelayTimer.Tick += SendDelayTimer_Tick; // sends key by key
+            
             SendDelayTimer.Start();
         }
 
@@ -226,7 +238,26 @@ namespace TeamPassword.Library
             else
                 SendKeys.Send(EscapeForSendKeys(sendKey));
 
+            SendDelayTimer.Interval = SendDelayTimer.IntervalDelayToUse;
             SendDelayTimer.Start();
+        }
+
+        private static void SendDelayTimer_All(object sender, EventArgs e)
+        {
+            SendKeys.Flush();
+
+            if (SendDelaySendWait)
+                SendKeys.SendWait(EscapeForSendKeys(SendDelayToSend));
+            else
+                SendKeys.Send(EscapeForSendKeys(SendDelayToSend));
+        }
+
+        public class TimerEx : Timer
+        {
+            /// <summary>
+            /// delay which should be used for following intervals (to be able to specify another initial interval)
+            /// </summary>
+            public int IntervalDelayToUse { get; set; }
         }
     }
 }

@@ -23,7 +23,7 @@ This project is still in beta phase and there are some things missing like:
 * License
 * Settings
 
-# Application .config
+# TeamPassword.Viewer.exe.config
 ## User
 * ActivateSendKeys (enable sendkeys features)
 * NeedsUpgrade (needed to determinate if the config file needs an update)
@@ -34,6 +34,12 @@ This project is still in beta phase and there are some things missing like:
 * ViewStyle (style of your password list)
 ## Application
 * HidePasswordsAfterSeconds (if password is revealed in the UI it is hidden after these amount of seconds - or not if 0)
+
+# TeamPassword.Library.dll.config
+## Application
+* SendDelay (each key is delayed for these amount of milliseconds if send keys/send to application is used)
+* SendDelayInitial (waits these amounts of milliseconds before starting to send the first key (must be bigger than SendDelay) - needed e.g. for slow teamivewer connections)
+* SendWait (uses the default send keys feature to wait till application accepted the key)
 
 # Screenshot
 ![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot1.png)
