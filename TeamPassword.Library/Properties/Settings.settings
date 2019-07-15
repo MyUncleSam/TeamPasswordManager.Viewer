@@ -9,7 +9,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SendDelayInitial" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">150</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
   </Settings>
 </SettingsFile>

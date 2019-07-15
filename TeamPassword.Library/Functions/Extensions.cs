@@ -205,7 +205,7 @@ namespace TeamPassword.Library
 
             SendDelayTimer = new TimerEx();
 
-            if (Properties.Settings.Default.SendDelayInitial > 0 && Properties.Settings.Default.SendDelayInitial > keyDelayMs)
+            if (Properties.Settings.Default.SendDelayInitial > keyDelayMs)
                 SendDelayTimer.Interval = Properties.Settings.Default.SendDelayInitial;
             else
                 SendDelayTimer.Interval = keyDelayMs;
