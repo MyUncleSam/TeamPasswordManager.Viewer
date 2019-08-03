@@ -106,7 +106,7 @@ namespace TeamPassword.Library.Controls
 				olvMain.SetObjects(inst.Passwords.GetProjectPasswords(projectId).GetListEntryEx());
 				olvMain.Sort("Name");
             }
-			catch(Exception ex)
+			catch
 			{
 				olvMain.ClearObjects();
 			}
@@ -151,7 +151,7 @@ namespace TeamPassword.Library.Controls
                 olvMain.SetObjects(pws.GetListEntryEx());
                 olvMain.Sort("Name");
             }
-            catch (Exception ex)
+            catch
             {
                 olvMain.ClearObjects();
             }

@@ -189,8 +189,9 @@ namespace TeamPassword.Library
         private static TimerEx SendDelayTimer = new TimerEx();
         private static string SendDelayToSend = null;
         private static bool SendDelaySendWait = false;
+        private static bool SendFinalEnter = false;
 
-        public static void SendKeysExDelay(this string toSend, int keyDelayMs, bool sendWait = false)
+        public static void SendKeysExDelay(this string toSend, int keyDelayMs, bool sendWait = false, bool sendEnter = false)
         {
             try { SendDelayTimer.Stop(); } catch { }
 
@@ -202,6 +203,7 @@ namespace TeamPassword.Library
 
             SendDelayToSend = toSend;
             SendDelaySendWait = sendWait;
+            SendFinalEnter = sendEnter;
 
             SendDelayTimer = new TimerEx();
 
@@ -226,7 +228,18 @@ namespace TeamPassword.Library
         {
             SendDelayTimer.Stop();
             if (string.IsNullOrWhiteSpace(SendDelayToSend))
+            {
+                if (SendFinalEnter)
+                {
+                    SendKeys.Flush();
+
+                    if (SendDelaySendWait)
+                        SendKeys.SendWait("{ENTER}");
+                    else
+                        SendKeys.Send("{ENTER}");
+                }
                 return;
+            }
 
             string sendKey = SendDelayToSend[0].ToString();
             SendDelayToSend = SendDelayToSend.Substring(1);

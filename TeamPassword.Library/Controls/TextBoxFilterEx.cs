@@ -12,8 +12,8 @@ namespace TeamPassword.Library.Controls
 {
 	public partial class TextBoxFilterEx : UserControl
 	{
-		public new event TbFilterChanged FilterChanged;
-		public new event TbFilterChanged FilterChangedDelayed;
+		public event TbFilterChanged FilterChanged;
+		public event TbFilterChanged FilterChangedDelayed;
 
         public bool RecursiveCheckbox { get; set; }
 

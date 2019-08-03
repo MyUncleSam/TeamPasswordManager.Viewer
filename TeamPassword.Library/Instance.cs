@@ -41,11 +41,14 @@ namespace TeamPassword.Library
             PasswordInfo = new Functions.PasswordInfo(this);
             PasswordGenerator = new Functions.PasswordGenerator(this);
             Favorites = new Functions.Favorites(this);
+
+            Functions.SettingsUpdater.UpdateSettings();
 		}
 
         private Instance()
         {
             GetRest = new Rest.RestClass(this);
+            Functions.SettingsUpdater.UpdateSettings();
         }
 
         /// <summary>

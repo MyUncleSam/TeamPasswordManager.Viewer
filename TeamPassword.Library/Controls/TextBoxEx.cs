@@ -25,7 +25,7 @@ namespace TeamPassword.Library.Controls
 		static extern bool IsIconic(IntPtr hWnd);
 
 		public new event TbTextChanged TextChanged;
-		public new event TbTextChanged TextChangedDelayed;
+		public event TbTextChanged TextChangedDelayed;
 
 		private DateTime lastInput = DateTime.Now;
 		private const int delay = 250; // delay in ms
@@ -190,7 +190,7 @@ namespace TeamPassword.Library.Controls
 					SetForegroundWindow(handle);
 
                     if (!string.IsNullOrWhiteSpace(textToSend))
-                        textToSend.SendKeysExDelay(Properties.Settings.Default.SendDelay, Properties.Settings.Default.SendWait);
+                        textToSend.SendKeysExDelay(Properties.Settings.Default.SendDelay, Properties.Settings.Default.SendWait, wc.SendReturn);
 				}
 				catch(Exception ex)
 				{

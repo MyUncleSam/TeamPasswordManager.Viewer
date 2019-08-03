@@ -86,7 +86,7 @@ namespace TeamPassword.Library.Forms
 				this.DialogResult = DialogResult.OK;
 				this.Close();
 			}
-			catch (Exception ex)
+			catch
 			{
 				MessageBox.Show("Unable to validate login information.", "Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 				GetLoginInformation = null;
