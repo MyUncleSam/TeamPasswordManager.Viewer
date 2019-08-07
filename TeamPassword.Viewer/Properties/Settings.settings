@@ -15,7 +15,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ActivateSendKeys" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ViewStyle" Type="System.String" Scope="User">
       <Value Profile="(Default)">Details</Value>

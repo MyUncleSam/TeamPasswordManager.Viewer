@@ -11,8 +11,8 @@ namespace TeamPassword.Library.Functions
 	public sealed class ClipboardManager
 	{
 		private static ClipboardManager Instance = null;
-		private IKeyboardMouseEvents GlobalHooks = null;
-		public bool UseSendkeys { get; set; }
+		//private IKeyboardMouseEvents GlobalHooks = null;
+		//public bool UseSendkeys { get; set; }
 		public ClipboardEntries ToPaste = null;
 
 		private Timer PasteDelayTimer = new Timer();
@@ -33,25 +33,33 @@ namespace TeamPassword.Library.Functions
 			return Instance;
 		}
 
-		public void ChangeHotkey(string hotKey)
-		{
-			if(GlobalHooks != null)
-				GlobalHooks.Dispose();
+		//public void ChangeHotkey(string hotKey)
+		//{
+		//	if(GlobalHooks != null)
+		//		GlobalHooks.Dispose();
 
-			GlobalHooks = Hook.GlobalEvents();
+		//	GlobalHooks = Hook.GlobalEvents();
 
-			var hotkey = Combination.FromString(hotKey);
-			var hotkeyPaste = Combination.FromString("Control+V");
+		//	var hotkey = Combination.FromString(hotKey);
+		//	var hotkeyPaste = Combination.FromString("Control+V");
 
-			Action skActionSendkeys = skSendSendkeys;
-			Action skActionPaste = skSendPaste;
+		//	Action skActionSendkeys = skSendSendkeys;
+		//	Action skActionPaste = skSendPaste;
 
-			GlobalHooks.OnCombination(new Dictionary<Combination, Action>
-			{
-				{ hotkey, skActionSendkeys },
-				{ hotkeyPaste, skActionPaste }
-			});
-		}
+		//	GlobalHooks.OnCombination(new Dictionary<Combination, Action>
+		//	{
+		//		{ hotkey, skActionSendkeys },
+		//		{ hotkeyPaste, skActionPaste }
+		//	});
+		//}
+
+		//private void skSendSendkeys()
+		//{
+  //          if (UseSendkeys && !string.IsNullOrWhiteSpace(Clipboard.GetText()))
+  //              Clipboard.GetText().SendKeysExDelay(Properties.Settings.Default.SendDelay, Properties.Settings.Default.SendWait);
+
+		//	TextPasted();
+		//}
 
 		public void SetText(ClipboardEntries entries)
 		{
@@ -75,13 +83,6 @@ namespace TeamPassword.Library.Functions
 			System.Diagnostics.Debug.WriteLine(string.Format("New clipboard text: {0}", text));
 		}
 
-		private void skSendSendkeys()
-		{
-            if (UseSendkeys && !string.IsNullOrWhiteSpace(Clipboard.GetText()))
-                Clipboard.GetText().SendKeysExDelay(Properties.Settings.Default.SendDelay, Properties.Settings.Default.SendWait);
-
-			TextPasted();
-		}
 
 		private void skSendPaste()
 		{

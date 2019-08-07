@@ -15,21 +15,21 @@ namespace TeamPassword.Viewer
         private Library.LoginInformation login = null;
         public Library.Forms.Login loginForm = null;
 		private TeamPasswordManager TPM = null;
-		private ContextMenu cm = new ContextMenu();
         private Library.Instance inst = null;
         private bool IsDoubleClicked = false;
+        private ContextMenuStrip cms = new ContextMenuStrip();
 
         public Main()
         {
             InitializeComponent();
 
 			// initialize clipboard manager
-			Library.Functions.ClipboardManager.GetInstance().UseSendkeys = Properties.Settings.Default.ActivateSendKeys;
-			try
-			{
-				Library.Functions.ClipboardManager.GetInstance().ChangeHotkey(Properties.Settings.Default.SendKeysKey);
-			}
-			catch { }
+			//Library.Functions.ClipboardManager.GetInstance().UseSendkeys = Properties.Settings.Default.ActivateSendKeys;
+			//try
+			//{
+			//	Library.Functions.ClipboardManager.GetInstance().ChangeHotkey(Properties.Settings.Default.SendKeysKey);
+			//}
+			//catch { }
         }
 
         private void Main_Shown(object sender, EventArgs e)
@@ -53,24 +53,29 @@ namespace TeamPassword.Viewer
             }
 
             // create menu items
-            MenuItem cmExit = new MenuItem("Exit");
+            ToolStripMenuItem cmExit = new ToolStripMenuItem("Exit");
+            cmExit.Image = Properties.Resources.exit;
             cmExit.Click += CmExit_Click;
 
-            MenuItem cmLogin = new MenuItem("Login");
+            ToolStripMenuItem cmLogin = new ToolStripMenuItem("Login");
+            cmLogin.Image = Properties.Resources.account;
             cmLogin.Click += CmLogin_Click;
 
-			MenuItem cmOpen = new MenuItem("Open");
-			cmOpen.DefaultItem = true;
+            ToolStripMenuItem cmOpen = new ToolStripMenuItem("Open");
+            cmOpen.Font = new Font(cmOpen.Font, FontStyle.Bold);
+            cmOpen.Image = Properties.Resources.key.ToBitmap();
 			cmOpen.Click += CmOpen_Click;
 
-			MenuItem cmKeyHooks = new MenuItem("Enable SendKeys");
-			cmKeyHooks.Checked = Properties.Settings.Default.ActivateSendKeys;
-			cmKeyHooks.Click += CmKeyHooks_Click;
+            //MenuItem cmKeyHooks = new MenuItem("Enable SendKeys");
+            //cmKeyHooks.Checked = Properties.Settings.Default.ActivateSendKeys;
+            //cmKeyHooks.Click += CmKeyHooks_Click;
 
-            MenuItem cmNewPassword = new MenuItem("Copy new password");
+            ToolStripMenuItem cmNewPassword = new ToolStripMenuItem("Copy new password");
+            cmNewPassword.Image = Properties.Resources.copy_password;
             cmNewPassword.Click += CmNewPassword_Click;
 
-            MenuItem cmAutostart = new MenuItem("AutoStart");
+            ToolStripMenuItem cmAutostart = new ToolStripMenuItem("AutoStart");
+            cmAutostart.Image = Properties.Resources.launch;
 #if DEBUG
 			cmAutostart.Enabled = false;
 			cmAutostart.Text = string.Format("{0} (disabled in debug mode)", cmAutostart.Text);
@@ -79,54 +84,55 @@ namespace TeamPassword.Viewer
             cmAutostart.Checked = ManageAutostart.Instance.Enabled;
 #endif
 
-			MenuItem cmAbout = new MenuItem("About");
+            ToolStripMenuItem cmAbout = new ToolStripMenuItem("About");
+            cmAbout.Image = Properties.Resources.info;
 			cmAbout.Click += CmAbout_Click;
 
-			MenuItem cmHotkey = new MenuItem("Set hotkey");
-			cmHotkey.Click += CmHotkey_Click;
+			//MenuItem cmHotkey = new MenuItem("Set hotkey");
+			//cmHotkey.Click += CmHotkey_Click;
 
 			// add menu items
-			cm.MenuItems.Add(cmOpen);
-			cm.MenuItems.Add("-");
-            cm.MenuItems.Add(cmNewPassword);
-            cm.MenuItems.Add("-");
-            cm.MenuItems.Add(cmLogin);
-			cm.MenuItems.Add(cmKeyHooks);
-			cm.MenuItems.Add(cmHotkey);
-            cm.MenuItems.Add(cmAutostart);
-            cm.MenuItems.Add("-");
-			cm.MenuItems.Add(cmAbout);
-            cm.MenuItems.Add(cmExit);
+			cms.Items.Add(cmOpen);
+			cms.Items.Add("-");
+            cms.Items.Add(cmNewPassword);
+            cms.Items.Add("-");
+            cms.Items.Add(cmLogin);
+			//cm.MenuItems.Add(cmKeyHooks);
+			//cm.MenuItems.Add(cmHotkey);
+            cms.Items.Add(cmAutostart);
+            cms.Items.Add("-");
+			cms.Items.Add(cmAbout);
+            cms.Items.Add(cmExit);
 
-            mainNotify.ContextMenu = cm;
+            mainNotify.ContextMenuStrip = cms;
 
 #if DEBUG
             ShowPasswordViewer();
 #endif
         }
 
-		private void CmHotkey_Click(object sender, EventArgs e)
-		{
-			Hotkey hk = new Hotkey();
-			hk.SetHotkey(Properties.Settings.Default.SendKeysKey);
+		//private void CmHotkey_Click(object sender, EventArgs e)
+		//{
+		//	Hotkey hk = new Hotkey();
+		//	hk.SetHotkey(Properties.Settings.Default.SendKeysKey);
 
-			bool successfullKey = false;
-			while(!successfullKey && hk.ShowDialog() == DialogResult.OK)
-			{
-				try
-				{
-					Library.Functions.ClipboardManager.GetInstance().ChangeHotkey(hk.NewHotkey);
+		//	bool successfullKey = false;
+		//	while(!successfullKey && hk.ShowDialog() == DialogResult.OK)
+		//	{
+		//		try
+		//		{
+		//			Library.Functions.ClipboardManager.GetInstance().ChangeHotkey(hk.NewHotkey);
 
-					Properties.Settings.Default.SendKeysKey = hk.NewHotkey;
-					Properties.Settings.Default.Save();
-					successfullKey = true;
-				}
-				catch
-				{
-					MessageBox.Show("This key combination is invalid.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-				}
-			}
-		}
+		//			Properties.Settings.Default.SendKeysKey = hk.NewHotkey;
+		//			Properties.Settings.Default.Save();
+		//			successfullKey = true;
+		//		}
+		//		catch
+		//		{
+		//			MessageBox.Show("This key combination is invalid.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+		//		}
+		//	}
+		//}
 
 		private void CmAbout_Click(object sender, EventArgs e)
 		{
@@ -152,13 +158,13 @@ namespace TeamPassword.Viewer
                 Clipboard.SetText(inst.PasswordGenerator.GetNewPasswordString(), TextDataFormat.Text);
         }
 		
-		private void CmKeyHooks_Click(object sender, EventArgs e)
-		{
-			((MenuItem)sender).Checked = !((MenuItem)sender).Checked;
-			Properties.Settings.Default.ActivateSendKeys = ((MenuItem)sender).Checked;
-			Properties.Settings.Default.Save();
-			Library.Functions.ClipboardManager.GetInstance().UseSendkeys = Properties.Settings.Default.ActivateSendKeys;
-		}
+		//private void CmKeyHooks_Click(object sender, EventArgs e)
+		//{
+		//	((MenuItem)sender).Checked = !((MenuItem)sender).Checked;
+		//	Properties.Settings.Default.ActivateSendKeys = ((MenuItem)sender).Checked;
+		//	Properties.Settings.Default.Save();
+		//	Library.Functions.ClipboardManager.GetInstance().UseSendkeys = Properties.Settings.Default.ActivateSendKeys;
+		//}
 
 		private void CmOpen_Click(object sender, EventArgs e)
 		{
@@ -180,21 +186,23 @@ namespace TeamPassword.Viewer
                 }
             }
 
+            TPM.TopMost = true;
             TPM.Show();
             TPM.BringToFront();
+            TPM.Focus();
+            TPM.TopMost = false;
         }
 
         private void ShowPasswordViewer()
         {
-            foreach (MenuItem me in mainNotify.ContextMenu.MenuItems)
-            {
-                if (!me.DefaultItem)
-                    continue;
-
-                // use first found default menu item to call
-                me.PerformClick();
-                return;
-            }
+            mainNotify
+                .ContextMenuStrip
+                .Items
+                .Cast<Object>()
+                .Where(w => w.GetType() == typeof(ToolStripMenuItem))
+                ?.Cast<ToolStripMenuItem>()
+                ?.FirstOrDefault(f => f.Font.Bold)
+                ?.PerformClick();
         }
 
 		private void TPM_FormClosed(object sender, FormClosedEventArgs e)
