@@ -143,12 +143,12 @@ namespace TeamPassword.Viewer
         {
             try
             {
-                ManageAutostart.Instance.Enabled = !((MenuItem)sender).Checked;
-                ((MenuItem)sender).Checked = ManageAutostart.Instance.Enabled;
+                ManageAutostart.Instance.Enabled = !((ToolStripMenuItem)sender).Checked;
+                ((ToolStripMenuItem)sender).Checked = ManageAutostart.Instance.Enabled;
             }
-            catch
+            catch (Exception ex)
             {
-                ((MenuItem)sender).Checked = false;
+                ((ToolStripMenuItem)sender).Checked = false;
             }
         }
 
