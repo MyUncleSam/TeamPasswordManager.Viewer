@@ -1,16 +1,29 @@
 ﻿using Gma.System.MouseKeyHook;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamPassword.Library.Controls;
 
 namespace TeamPassword.Library.Functions
 {
 	public sealed class ClipboardManager
 	{
-		private static ClipboardManager Instance = null;
+        [DllImport("User32.dll")]
+        static extern int SetForegroundWindow(IntPtr point);
+
+        [DllImport("user32.dll", EntryPoint = "ShowWindow", SetLastError = true)]
+        static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool IsIconic(IntPtr hWnd);
+
+        private static ClipboardManager Instance = null;
 		private IKeyboardMouseEvents GlobalHooks = null;
 		//public bool UseSendkeys { get; set; }
 		public ClipboardEntries ToPaste = null;
@@ -50,6 +63,49 @@ namespace TeamPassword.Library.Functions
             {
                 { hotkeyPaste, skActionPaste }
             });
+        }
+
+        public void SendInputText()
+        {
+            string initialText = Clipboard.GetText();
+            TeamPassword.Library.Forms.InputText it = new Forms.InputText();
+
+            if (!string.IsNullOrWhiteSpace(initialText))
+                it.tbMain.Text = initialText;
+
+            it.Text = "Text to send";
+
+            if(it.ShowDialog() == DialogResult.OK)
+            {
+                string textToSend = it.tbMain.Text.Trim();
+                Forms.WindowChooser wc = new Forms.WindowChooser();
+                if (wc.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        Process proc = wc.Result.Process;
+
+                        // check if proc is still existing
+                        if (proc.HasExited)
+                            throw new Exception("Process is no longer available (maybe closed).");
+
+                        IntPtr handle = proc.MainWindowHandle;
+
+                        // check if window is minimized
+                        if (IsIconic(handle))
+                            ShowWindow(handle, ShowWindowCommands.ShowNoActivate);
+
+                        SetForegroundWindow(handle);
+
+                        if (!string.IsNullOrWhiteSpace(textToSend))
+                            textToSend.SendKeysExDelay(Properties.Settings.Default.SendDelay, Properties.Settings.Default.SendWait, wc.SendReturn);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Unable to send keys to application:{0}{1}", Environment.NewLine, ex.Message), "Unable to send", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
+                }
+            }
         }
 
         public void SetText(ClipboardEntries entries)

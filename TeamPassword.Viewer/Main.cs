@@ -74,6 +74,10 @@ namespace TeamPassword.Viewer
             cmNewPassword.Image = Properties.Resources.copy_password;
             cmNewPassword.Click += CmNewPassword_Click;
 
+            ToolStripMenuItem cmTypeText = new ToolStripMenuItem("Send text to application");
+            cmTypeText.Image = Properties.Resources.appsend;
+            cmTypeText.Click += CmTypeText_Click;
+
             ToolStripMenuItem cmAutostart = new ToolStripMenuItem("AutoStart");
             cmAutostart.Image = Properties.Resources.launch;
 #if DEBUG
@@ -95,6 +99,7 @@ namespace TeamPassword.Viewer
 			cms.Items.Add(cmOpen);
 			cms.Items.Add("-");
             cms.Items.Add(cmNewPassword);
+            cms.Items.Add(cmTypeText);
             cms.Items.Add("-");
             cms.Items.Add(cmLogin);
 			//cm.MenuItems.Add(cmKeyHooks);
@@ -111,30 +116,35 @@ namespace TeamPassword.Viewer
 #endif
         }
 
-		//private void CmHotkey_Click(object sender, EventArgs e)
-		//{
-		//	Hotkey hk = new Hotkey();
-		//	hk.SetHotkey(Properties.Settings.Default.SendKeysKey);
+        private void CmTypeText_Click(object sender, EventArgs e)
+        {
+            Library.Functions.ClipboardManager.GetInstance().SendInputText();
+        }
 
-		//	bool successfullKey = false;
-		//	while(!successfullKey && hk.ShowDialog() == DialogResult.OK)
-		//	{
-		//		try
-		//		{
-		//			Library.Functions.ClipboardManager.GetInstance().ChangeHotkey(hk.NewHotkey);
+        //private void CmHotkey_Click(object sender, EventArgs e)
+        //{
+        //	Hotkey hk = new Hotkey();
+        //	hk.SetHotkey(Properties.Settings.Default.SendKeysKey);
 
-		//			Properties.Settings.Default.SendKeysKey = hk.NewHotkey;
-		//			Properties.Settings.Default.Save();
-		//			successfullKey = true;
-		//		}
-		//		catch
-		//		{
-		//			MessageBox.Show("This key combination is invalid.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-		//		}
-		//	}
-		//}
+        //	bool successfullKey = false;
+        //	while(!successfullKey && hk.ShowDialog() == DialogResult.OK)
+        //	{
+        //		try
+        //		{
+        //			Library.Functions.ClipboardManager.GetInstance().ChangeHotkey(hk.NewHotkey);
 
-		private void CmAbout_Click(object sender, EventArgs e)
+        //			Properties.Settings.Default.SendKeysKey = hk.NewHotkey;
+        //			Properties.Settings.Default.Save();
+        //			successfullKey = true;
+        //		}
+        //		catch
+        //		{
+        //			MessageBox.Show("This key combination is invalid.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+        //		}
+        //	}
+        //}
+
+        private void CmAbout_Click(object sender, EventArgs e)
 		{
 			(new About()).ShowDialog();
 		}
