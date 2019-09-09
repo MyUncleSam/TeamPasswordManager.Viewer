@@ -38,7 +38,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(212, 61);
+            this.btnCancel.Location = new System.Drawing.Point(212, 199);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;
@@ -49,7 +49,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(293, 61);
+            this.btnOk.Location = new System.Drawing.Point(293, 199);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 5;
@@ -59,11 +59,13 @@
             // 
             // tbMain
             // 
-            this.tbMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMain.Location = new System.Drawing.Point(12, 12);
+            this.tbMain.Multiline = true;
             this.tbMain.Name = "tbMain";
-            this.tbMain.Size = new System.Drawing.Size(360, 20);
+            this.tbMain.Size = new System.Drawing.Size(360, 168);
             this.tbMain.TabIndex = 7;
             // 
             // panel1
@@ -74,7 +76,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Location = new System.Drawing.Point(-5, -5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(399, 60);
+            this.panel1.Size = new System.Drawing.Size(399, 198);
             this.panel1.TabIndex = 8;
             // 
             // InputText
@@ -83,12 +85,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(384, 96);
+            this.ClientSize = new System.Drawing.Size(384, 234);
             this.Controls.Add(this.tbMain);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "InputText";
             this.Text = "InputText";
             this.Shown += new System.EventHandler(this.InputText_Shown);
