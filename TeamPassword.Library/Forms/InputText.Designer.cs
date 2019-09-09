@@ -91,6 +91,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InputText";
             this.Text = "InputText";
+            this.Shown += new System.EventHandler(this.InputText_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

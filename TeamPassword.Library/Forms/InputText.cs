@@ -28,5 +28,10 @@ namespace TeamPassword.Library.Forms
         {
             this.Close();
         }
+
+        private void InputText_Shown(object sender, EventArgs e)
+        {
+            tbMain.Focus();
+        }
     }
 }
