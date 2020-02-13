@@ -40,19 +40,21 @@
             this.olvColumnValue = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.lblNotes = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pbOpenLink = new System.Windows.Forms.PictureBox();
-            this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbOpenLink = new System.Windows.Forms.PictureBox();
+            this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
             this.tbExpiryDate = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbPassword = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbEmail = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbUsername = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbAccess = new TeamPassword.Library.Controls.TextBoxEx();
+            this.lblGoogleAuth = new System.Windows.Forms.Label();
+            this.googleTotp = new TeamPassword.Library.Controls.TOPT();
             ((System.ComponentModel.ISupportInitialize)(this.olvOther)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAccess
@@ -115,14 +117,15 @@
             this.olvOther.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvOther.EmptyListMsg = "no entries";
             this.olvOther.FullRowSelect = true;
-            this.olvOther.Location = new System.Drawing.Point(3, 342);
+            this.olvOther.HideSelection = false;
+            this.olvOther.Location = new System.Drawing.Point(3, 354);
             this.olvOther.Name = "olvOther";
             this.olvOther.ShowCommandMenuOnRightClick = true;
             this.olvOther.ShowGroups = false;
             this.olvOther.ShowHeaderInAllViews = false;
             this.olvOther.ShowImagesOnSubItems = true;
             this.olvOther.ShowItemToolTips = true;
-            this.olvOther.Size = new System.Drawing.Size(383, 238);
+            this.olvOther.Size = new System.Drawing.Size(383, 226);
             this.olvOther.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.olvOther.TabIndex = 12;
             this.olvOther.UseAlternatingBackColors = true;
@@ -147,11 +150,38 @@
             // lblNotes
             // 
             this.lblNotes.AutoSize = true;
-            this.lblNotes.Location = new System.Drawing.Point(3, 153);
+            this.lblNotes.Location = new System.Drawing.Point(3, 165);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(35, 13);
             this.lblNotes.TabIndex = 10;
             this.lblNotes.Text = "Notes";
+            // 
+            // rtbNotes
+            // 
+            this.rtbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbNotes.BackColor = System.Drawing.SystemColors.Window;
+            this.rtbNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbNotes.Location = new System.Drawing.Point(1, 1);
+            this.rtbNotes.Name = "rtbNotes";
+            this.rtbNotes.ReadOnly = true;
+            this.rtbNotes.Size = new System.Drawing.Size(381, 165);
+            this.rtbNotes.TabIndex = 14;
+            this.rtbNotes.Text = "";
+            this.rtbNotes.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbNotes_LinkClicked);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.rtbNotes);
+            this.panel1.Location = new System.Drawing.Point(3, 181);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(383, 167);
+            this.panel1.TabIndex = 15;
             // 
             // pbOpenLink
             // 
@@ -179,33 +209,6 @@
             this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
             this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
             this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
-            // 
-            // rtbNotes
-            // 
-            this.rtbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbNotes.BackColor = System.Drawing.SystemColors.Window;
-            this.rtbNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbNotes.Location = new System.Drawing.Point(1, 1);
-            this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.ReadOnly = true;
-            this.rtbNotes.Size = new System.Drawing.Size(381, 165);
-            this.rtbNotes.TabIndex = 14;
-            this.rtbNotes.Text = "";
-            this.rtbNotes.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbNotes_LinkClicked);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.rtbNotes);
-            this.panel1.Location = new System.Drawing.Point(3, 169);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(383, 167);
-            this.panel1.TabIndex = 15;
             // 
             // tbExpiryDate
             // 
@@ -282,11 +285,31 @@
             this.tbAccess.TabIndex = 1;
             this.tbAccess.UseSystemPasswordChar = false;
             // 
+            // lblGoogleAuth
+            // 
+            this.lblGoogleAuth.AutoSize = true;
+            this.lblGoogleAuth.Location = new System.Drawing.Point(3, 139);
+            this.lblGoogleAuth.Name = "lblGoogleAuth";
+            this.lblGoogleAuth.Size = new System.Drawing.Size(63, 13);
+            this.lblGoogleAuth.TabIndex = 17;
+            this.lblGoogleAuth.Text = "Google 2FA";
+            // 
+            // googleTotp
+            // 
+            this.googleTotp.Location = new System.Drawing.Point(93, 133);
+            this.googleTotp.MaximumSize = new System.Drawing.Size(500, 500);
+            this.googleTotp.MinimumSize = new System.Drawing.Size(64, 18);
+            this.googleTotp.Name = "googleTotp";
+            this.googleTotp.Size = new System.Drawing.Size(88, 28);
+            this.googleTotp.TabIndex = 18;
+            // 
             // Password
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.googleTotp);
+            this.Controls.Add(this.lblGoogleAuth);
             this.Controls.Add(this.pbOpenLink);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pbCopyUsernamePassword);
@@ -305,9 +328,9 @@
             this.Name = "Password";
             this.Size = new System.Drawing.Size(389, 583);
             ((System.ComponentModel.ISupportInitialize)(this.olvOther)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +357,7 @@
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbOpenLink;
+        private System.Windows.Forms.Label lblGoogleAuth;
+        private TOPT googleTotp;
     }
 }

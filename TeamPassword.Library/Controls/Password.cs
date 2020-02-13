@@ -81,18 +81,32 @@ namespace TeamPassword.Library.Controls
 			List<PasswordOtherEntry> otherEntries = new List<PasswordOtherEntry>();
 			IEnumerable<System.Reflection.PropertyInfo> props = PasswordEntry.GetType().GetProperties().Where(w => w.Name.StartsWith("custom_field"));
 
+            string google2FAsecret = null;
 			foreach (System.Reflection.PropertyInfo prop in props)
 			{
 				Library.Objects.PasswordInfo.Custom_Field cusFiels = (Library.Objects.PasswordInfo.Custom_Field)prop.GetValue(PasswordEntry, null);
 				if (cusFiels == null)
 					continue;
 
-				otherEntries.Add(new PasswordOtherEntry()
+				PasswordOtherEntry toAdd = new PasswordOtherEntry()
 				{
 					Name = cusFiels.label,
 					Value = cusFiels.data
-				});
+				};
+
+                if (toAdd.Name.Equals("Google2FA"))
+                {
+                    google2FAsecret = toAdd.Value;
+                    toAdd.Value = "<hidden>";
+                }
+
+                otherEntries.Add(toAdd);
 			}
+
+            if (google2FAsecret == null)
+                googleTotp.SetGoogleAuthenticatorSecrete(null);
+            else
+                googleTotp.SetGoogleAuthenticatorSecrete(google2FAsecret);
 
 			olvOther.SetObjects(otherEntries);
 			olvOther.Sort("Name");
