@@ -40,21 +40,21 @@
             this.olvColumnValue = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.lblNotes = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.rtbNotes = new System.Windows.Forms.RichTextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pbOpenLink = new System.Windows.Forms.PictureBox();
             this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
+            this.rtbNotes = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblGoogleAuth = new System.Windows.Forms.Label();
+            this.googleTotp = new TeamPassword.Library.Controls.TOPT();
             this.tbExpiryDate = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbPassword = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbEmail = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbUsername = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbAccess = new TeamPassword.Library.Controls.TextBoxEx();
-            this.lblGoogleAuth = new System.Windows.Forms.Label();
-            this.googleTotp = new TeamPassword.Library.Controls.TOPT();
             ((System.ComponentModel.ISupportInitialize)(this.olvOther)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAccess
@@ -156,6 +156,33 @@
             this.lblNotes.TabIndex = 10;
             this.lblNotes.Text = "Notes";
             // 
+            // pbOpenLink
+            // 
+            this.pbOpenLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbOpenLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOpenLink.Image = global::TeamPassword.Library.Properties.Resources.world;
+            this.pbOpenLink.Location = new System.Drawing.Point(332, 139);
+            this.pbOpenLink.Name = "pbOpenLink";
+            this.pbOpenLink.Size = new System.Drawing.Size(24, 24);
+            this.pbOpenLink.TabIndex = 16;
+            this.pbOpenLink.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbOpenLink, "Show password in the web interface.");
+            this.pbOpenLink.Click += new System.EventHandler(this.pbOpenLink_Click);
+            // 
+            // pbCopyUsernamePassword
+            // 
+            this.pbCopyUsernamePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbCopyUsernamePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCopyUsernamePassword.Image = global::TeamPassword.Library.Properties.Resources.userpass;
+            this.pbCopyUsernamePassword.Location = new System.Drawing.Point(362, 139);
+            this.pbCopyUsernamePassword.Name = "pbCopyUsernamePassword";
+            this.pbCopyUsernamePassword.Size = new System.Drawing.Size(24, 24);
+            this.pbCopyUsernamePassword.TabIndex = 13;
+            this.pbCopyUsernamePassword.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
+            this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
+            this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
+            // 
             // rtbNotes
             // 
             this.rtbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -183,32 +210,26 @@
             this.panel1.Size = new System.Drawing.Size(383, 167);
             this.panel1.TabIndex = 15;
             // 
-            // pbOpenLink
+            // lblGoogleAuth
             // 
-            this.pbOpenLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbOpenLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbOpenLink.Image = global::TeamPassword.Library.Properties.Resources.world;
-            this.pbOpenLink.Location = new System.Drawing.Point(332, 139);
-            this.pbOpenLink.Name = "pbOpenLink";
-            this.pbOpenLink.Size = new System.Drawing.Size(24, 24);
-            this.pbOpenLink.TabIndex = 16;
-            this.pbOpenLink.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbOpenLink, "Show password in the web interface.");
-            this.pbOpenLink.Click += new System.EventHandler(this.pbOpenLink_Click);
+            this.lblGoogleAuth.AutoSize = true;
+            this.lblGoogleAuth.Location = new System.Drawing.Point(3, 139);
+            this.lblGoogleAuth.Name = "lblGoogleAuth";
+            this.lblGoogleAuth.Size = new System.Drawing.Size(63, 13);
+            this.lblGoogleAuth.TabIndex = 17;
+            this.lblGoogleAuth.Text = "Google 2FA";
+            this.toolTip1.SetToolTip(this.lblGoogleAuth, "To use the google authenticator feature\r\nyou simply need to creat a custom field\r" +
+        "\ncalled \"Google2FA\" and save your secret\r\ninside this custom field.");
             // 
-            // pbCopyUsernamePassword
+            // googleTotp
             // 
-            this.pbCopyUsernamePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbCopyUsernamePassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbCopyUsernamePassword.Image = global::TeamPassword.Library.Properties.Resources.userpass;
-            this.pbCopyUsernamePassword.Location = new System.Drawing.Point(362, 139);
-            this.pbCopyUsernamePassword.Name = "pbCopyUsernamePassword";
-            this.pbCopyUsernamePassword.Size = new System.Drawing.Size(24, 24);
-            this.pbCopyUsernamePassword.TabIndex = 13;
-            this.pbCopyUsernamePassword.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbCopyUsernamePassword, resources.GetString("pbCopyUsernamePassword.ToolTip"));
-            this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
-            this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
+            this.googleTotp.BackColor = System.Drawing.Color.Transparent;
+            this.googleTotp.Location = new System.Drawing.Point(93, 133);
+            this.googleTotp.MaximumSize = new System.Drawing.Size(500, 500);
+            this.googleTotp.MinimumSize = new System.Drawing.Size(64, 18);
+            this.googleTotp.Name = "googleTotp";
+            this.googleTotp.Size = new System.Drawing.Size(88, 28);
+            this.googleTotp.TabIndex = 18;
             // 
             // tbExpiryDate
             // 
@@ -285,24 +306,6 @@
             this.tbAccess.TabIndex = 1;
             this.tbAccess.UseSystemPasswordChar = false;
             // 
-            // lblGoogleAuth
-            // 
-            this.lblGoogleAuth.AutoSize = true;
-            this.lblGoogleAuth.Location = new System.Drawing.Point(3, 139);
-            this.lblGoogleAuth.Name = "lblGoogleAuth";
-            this.lblGoogleAuth.Size = new System.Drawing.Size(63, 13);
-            this.lblGoogleAuth.TabIndex = 17;
-            this.lblGoogleAuth.Text = "Google 2FA";
-            // 
-            // googleTotp
-            // 
-            this.googleTotp.Location = new System.Drawing.Point(93, 133);
-            this.googleTotp.MaximumSize = new System.Drawing.Size(500, 500);
-            this.googleTotp.MinimumSize = new System.Drawing.Size(64, 18);
-            this.googleTotp.Name = "googleTotp";
-            this.googleTotp.Size = new System.Drawing.Size(88, 28);
-            this.googleTotp.TabIndex = 18;
-            // 
             // Password
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,9 +331,9 @@
             this.Name = "Password";
             this.Size = new System.Drawing.Size(389, 583);
             ((System.ComponentModel.ISupportInitialize)(this.olvOther)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbOpenLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCopyUsernamePassword)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

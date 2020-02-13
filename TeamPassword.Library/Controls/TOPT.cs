@@ -36,8 +36,8 @@ namespace TeamPassword.Library.Controls
             if (string.IsNullOrWhiteSpace(secret))
             {
                 googleTotp = null;
-                lblTotp.Text = "-";
-                lblTimeRemaining.Text = "-";
+                lblTotp.Text = "N/A";
+                lblTimeRemaining.Text = "";
                 pbMain.Value = 0;
             }
             else
