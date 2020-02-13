@@ -15,7 +15,8 @@ namespace TeamPassword.Library.Controls
     {
         private Totp googleTotp = null;
         Label lblNothing = new Label();
-        int? curTopt = null;
+        string curTopt = null;
+
         public TOPT()
         {
             InitializeComponent();
@@ -68,10 +69,9 @@ namespace TeamPassword.Library.Controls
             }
 
             int remainingTime = googleTotp.RemainingSeconds();
-            int compTotp = Convert.ToInt32(googleTotp.ComputeTotp());
-            string readableTopt = MakeHumanReadable(compTotp.ToString());
+            curTopt = googleTotp.ComputeTotp();
+            string readableTopt = MakeHumanReadable(curTopt);
 
-            curTopt = compTotp;
             lblTotp.Cursor = Cursors.Hand;
 
             lblTimeRemaining.Text = remainingTime.ToString();
