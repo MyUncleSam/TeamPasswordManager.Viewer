@@ -95,10 +95,13 @@ namespace TeamPassword.Library.Controls
 					Value = cusFiels.data
 				};
 
+                if (cusFiels.label.Equals("Google2FA", StringComparison.OrdinalIgnoreCase))
+                    google2FAsecret = toAdd.Value;
+
                 otherEntries.Add(toAdd);
 			}
 
-            if (google2FAsecret == null)
+            if (string.IsNullOrWhiteSpace(google2FAsecret))
                 googleTotp.SetGoogleAuthenticatorSecrete(null);
             else
                 googleTotp.SetGoogleAuthenticatorSecrete(google2FAsecret);
