@@ -10,6 +10,7 @@ Use at your own risk!
 * Search tree and list entries easily
 * Different list styles selectable
 * Autostart possible (using windows task scheduler logon option)
+* Google 2FA support using custom fields
 * Portable
 * Working API Access to basic functions needed for UI
 * Full access to UI controls (use it in your own application if you want to)
@@ -36,10 +37,17 @@ This project is still in beta phase and there are some things missing like:
 * HidePasswordsAfterSeconds (if password is revealed in the UI it is hidden after these amount of seconds - or not if 0)
 
 # TeamPassword.Library.dll.config
+## User
+* WindowChooserUsage (list of recently used programs in send keys feature - sorted after last used)
+* WindowChooserIgnoreProgramNames (list of program names which are going to be not shown in window chooser)
 ## Application
 * SendDelay (each key is delayed for these amount of milliseconds if send keys/send to application is used)
 * SendDelayInitial (waits these amounts of milliseconds before starting to send the first key (must be bigger than SendDelay) - needed e.g. for slow teamivewer connections)
 * SendWait (uses the default send keys feature to wait till application accepted the key)
+* WindowChooserLastUsedEntries (number of entries to show in window chooser - keep in mind that 3 can be viewed in default format)
 
 # Screenshot
+## Main Window
 ![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot1.png)
+## Window Chooser (for send keys)
+![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot2.png)
