@@ -51,3 +51,7 @@ This project is still in beta phase and there are some things missing like:
 ![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot1.png)
 ## Window Chooser (for send keys)
 ![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot2.png)
+## Tray icon
+![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot3.png)
+## Google 2FA
+![](https://github.com/MyUncleSam/TeamPasswordManager.Viewer/blob/master/Screenshot4.gif)
