@@ -34,6 +34,7 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCopyright = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(21, 88);
+            this.lblVersion.Location = new System.Drawing.Point(21, 109);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(62, 13);
             this.lblVersion.TabIndex = 3;
@@ -62,7 +63,7 @@
             // lblLibrary
             // 
             this.lblLibrary.AutoSize = true;
-            this.lblLibrary.Location = new System.Drawing.Point(21, 106);
+            this.lblLibrary.Location = new System.Drawing.Point(21, 127);
             this.lblLibrary.Name = "lblLibrary";
             this.lblLibrary.Size = new System.Drawing.Size(95, 13);
             this.lblLibrary.TabIndex = 4;
@@ -86,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btnOk);
-            this.panel1.Location = new System.Drawing.Point(-12, 163);
+            this.panel1.Location = new System.Drawing.Point(-12, 175);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(504, 74);
             this.panel1.TabIndex = 6;
@@ -94,11 +95,23 @@
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(21, 124);
+            this.lblCopyright.Location = new System.Drawing.Point(21, 145);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(71, 13);
             this.lblCopyright.TabIndex = 7;
             this.lblCopyright.Text = "Copyright: {0}";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(452, 18);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "(Inofficial Windows client - use at your own risk!)";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // About
             // 
@@ -107,7 +120,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.CancelButton = this.btnOk;
-            this.ClientSize = new System.Drawing.Size(476, 204);
+            this.ClientSize = new System.Drawing.Size(476, 216);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblLibrary);
@@ -135,5 +149,6 @@
 		private System.Windows.Forms.Button btnOk;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label lblCopyright;
-	}
+        private System.Windows.Forms.Label label1;
+    }
 }
