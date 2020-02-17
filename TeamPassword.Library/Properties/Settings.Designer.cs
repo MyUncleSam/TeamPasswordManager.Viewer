@@ -12,7 +12,7 @@ namespace TeamPassword.Library.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -71,6 +71,46 @@ namespace TeamPassword.Library.Properties {
             }
             set {
                 this["NeedsUpgrade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection WindowChooserUsage {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["WindowChooserUsage"]));
+            }
+            set {
+                this["WindowChooserUsage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>TeamPassword.Viewer</string>
+  <string>explorer</string>
+  <string>ShellExperienceHost</string>
+  <string>ApplicationFrameHost</string>
+  <string>WinStore.App</string>
+  <string>SystemSettings</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection WindowChooserIgnoreProgramNames {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["WindowChooserIgnoreProgramNames"]));
+            }
+            set {
+                this["WindowChooserIgnoreProgramNames"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int WindowChooserLastUsedEntries {
+            get {
+                return ((int)(this["WindowChooserLastUsedEntries"]));
             }
         }
     }

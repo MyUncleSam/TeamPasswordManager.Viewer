@@ -31,6 +31,8 @@
             this.olvMain = new BrightIdeasSoftware.ObjectListView();
             this.colName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.colTitle = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvRecentlyUsed = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvSortString = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.cbSendReturn = new System.Windows.Forms.CheckBox();
@@ -41,6 +43,8 @@
             // 
             this.olvMain.AllColumns.Add(this.colName);
             this.olvMain.AllColumns.Add(this.colTitle);
+            this.olvMain.AllColumns.Add(this.olvRecentlyUsed);
+            this.olvMain.AllColumns.Add(this.olvSortString);
             this.olvMain.AlternateRowBackColor = System.Drawing.Color.AliceBlue;
             this.olvMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -48,7 +52,8 @@
             this.olvMain.CellEditUseWholeCell = false;
             this.olvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
-            this.colTitle});
+            this.colTitle,
+            this.olvRecentlyUsed});
             this.olvMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvMain.EmptyListMsg = "no entries";
             this.olvMain.FullRowSelect = true;
@@ -58,7 +63,6 @@
             this.olvMain.Name = "olvMain";
             this.olvMain.SelectAllOnControlA = false;
             this.olvMain.ShowCommandMenuOnRightClick = true;
-            this.olvMain.ShowGroups = false;
             this.olvMain.ShowHeaderInAllViews = false;
             this.olvMain.ShowImagesOnSubItems = true;
             this.olvMain.ShowItemToolTips = true;
@@ -71,6 +75,7 @@
             this.olvMain.UseFiltering = true;
             this.olvMain.UseHotItem = true;
             this.olvMain.View = System.Windows.Forms.View.Tile;
+            this.olvMain.BeforeCreatingGroups += new System.EventHandler<BrightIdeasSoftware.CreateGroupsEventArgs>(this.OlvMain_BeforeCreatingGroups);
             this.olvMain.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvMain_CellClick);
             // 
             // colName
@@ -88,6 +93,20 @@
             this.colTitle.IsTileViewColumn = true;
             this.colTitle.Text = "Title";
             this.colTitle.Width = 460;
+            // 
+            // olvRecentlyUsed
+            // 
+            this.olvRecentlyUsed.AspectName = "LastUsed";
+            this.olvRecentlyUsed.IsEditable = false;
+            this.olvRecentlyUsed.IsTileViewColumn = true;
+            this.olvRecentlyUsed.Text = "Recently used";
+            // 
+            // olvSortString
+            // 
+            this.olvSortString.AspectName = "SortString";
+            this.olvSortString.IsEditable = false;
+            this.olvSortString.IsVisible = false;
+            this.olvSortString.Text = "SortString";
             // 
             // btnOk
             // 
@@ -152,5 +171,7 @@
 		private System.Windows.Forms.Button btnOk;
 		private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox cbSendReturn;
+        private BrightIdeasSoftware.OLVColumn olvRecentlyUsed;
+        private BrightIdeasSoftware.OLVColumn olvSortString;
     }
 }

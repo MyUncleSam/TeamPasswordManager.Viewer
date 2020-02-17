@@ -15,7 +15,7 @@ namespace TeamPassword.Library.Controls
     {
         private Totp googleTotp = null;
         Label lblNothing = new Label();
-        string curTopt = null;
+        public string CurrentTotp { get; private set; } = null;
 
         public TOPT()
         {
@@ -63,14 +63,14 @@ namespace TeamPassword.Library.Controls
         {
             if (googleTotp == null)
             {
-                curTopt = null;
+                CurrentTotp = null;
                 lblTotp.Cursor = Cursors.Default;
                 return;
             }
 
             int remainingTime = googleTotp.RemainingSeconds();
-            curTopt = googleTotp.ComputeTotp();
-            string readableTopt = MakeHumanReadable(curTopt);
+            CurrentTotp = googleTotp.ComputeTotp();
+            string readableTopt = MakeHumanReadable(CurrentTotp);
 
             lblTotp.Cursor = Cursors.Hand;
 
@@ -98,8 +98,8 @@ namespace TeamPassword.Library.Controls
 
         private void LblTotp_Click(object sender, EventArgs e)
         {
-            if (curTopt != null)
-                Functions.ClipboardManager.GetInstance().SetText(curTopt.ToString());
+            if (CurrentTotp != null)
+                Functions.ClipboardManager.GetInstance().SetText(CurrentTotp.ToString());
         }
     }
 }

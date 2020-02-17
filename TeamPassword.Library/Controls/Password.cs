@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BrightIdeasSoftware;
 
 namespace TeamPassword.Library.Controls
 {
@@ -94,12 +95,6 @@ namespace TeamPassword.Library.Controls
 					Value = cusFiels.data
 				};
 
-                if (toAdd.Name.Equals("Google2FA"))
-                {
-                    google2FAsecret = toAdd.Value;
-                    toAdd.Value = "<hidden>";
-                }
-
                 otherEntries.Add(toAdd);
 			}
 
@@ -135,6 +130,10 @@ namespace TeamPassword.Library.Controls
 			Functions.ClipboardManager.ClipboardEntries ce = new Functions.ClipboardManager.ClipboardEntries();
 			ce.AddEntry(username);
 			ce.AddEntry(password);
+
+            if (!string.IsNullOrWhiteSpace(googleTotp.CurrentTotp))
+                ce.AddEntry(googleTotp.CurrentTotp);
+
 			Functions.ClipboardManager.GetInstance().SetText(ce);
 		}
 
@@ -163,6 +162,42 @@ namespace TeamPassword.Library.Controls
                 return;
 
             System.Diagnostics.Process.Start(_ExternalLinkAddress.AbsoluteUri);
+        }
+
+        private void OlvOther_CellRightClick(object sender, BrightIdeasSoftware.CellRightClickEventArgs e)
+        {
+            if (e.Model == null)
+                return;
+
+            ObjectListView olv = (ObjectListView)sender;
+            PasswordOtherEntry selEntry = (PasswordOtherEntry)e.Model;
+
+            ToolStripMenuItem miCopyValue = new ToolStripMenuItem("copy value");
+            miCopyValue.Click += MiCopyValue_Click;
+            miCopyValue.Tag = selEntry;
+
+            ToolStripMenuItem miCopyName = new ToolStripMenuItem("copy name");
+            miCopyName.Click += MiCopyName_Click;
+            miCopyName.Tag = selEntry;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.Add(miCopyName);
+            cms.Items.Add(miCopyValue);
+
+            e.MenuStrip = cms;
+        }
+
+        private void MiCopyName_Click(object sender, EventArgs e)
+        {
+            PasswordOtherEntry selEntry = (PasswordOtherEntry)((ToolStripMenuItem)sender).Tag;
+            Functions.ClipboardManager.GetInstance().SetText(selEntry.Name);
+        }
+
+
+        private void MiCopyValue_Click(object sender, EventArgs e)
+        {
+            PasswordOtherEntry selEntry = (PasswordOtherEntry)((ToolStripMenuItem)sender).Tag;
+            Functions.ClipboardManager.GetInstance().SetText(selEntry.Value);
         }
     }
 }

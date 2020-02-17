@@ -17,5 +17,22 @@
     <Setting Name="NeedsUpgrade" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="WindowChooserUsage" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WindowChooserIgnoreProgramNames" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;TeamPassword.Viewer&lt;/string&gt;
+  &lt;string&gt;explorer&lt;/string&gt;
+  &lt;string&gt;ShellExperienceHost&lt;/string&gt;
+  &lt;string&gt;ApplicationFrameHost&lt;/string&gt;
+  &lt;string&gt;WinStore.App&lt;/string&gt;
+  &lt;string&gt;SystemSettings&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="WindowChooserLastUsedEntries" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

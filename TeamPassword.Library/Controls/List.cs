@@ -103,7 +103,9 @@ namespace TeamPassword.Library.Controls
 
 			try
 			{
-				olvMain.SetObjects(inst.Passwords.GetProjectPasswords(projectId).GetListEntryEx());
+                List<Objects.ListEntryEx> listEntries = inst.Passwords.GetProjectPasswords(projectId).GetListEntryEx();
+
+                olvMain.SetObjects(listEntries);
 				olvMain.Sort("Name");
             }
 			catch

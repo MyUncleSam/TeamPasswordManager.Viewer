@@ -42,9 +42,9 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pbOpenLink = new System.Windows.Forms.PictureBox();
             this.pbCopyUsernamePassword = new System.Windows.Forms.PictureBox();
+            this.lblGoogleAuth = new System.Windows.Forms.Label();
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblGoogleAuth = new System.Windows.Forms.Label();
             this.googleTotp = new TeamPassword.Library.Controls.TOPT();
             this.tbExpiryDate = new TeamPassword.Library.Controls.TextBoxEx();
             this.tbPassword = new TeamPassword.Library.Controls.TextBoxEx();
@@ -132,6 +132,7 @@
             this.olvOther.UseCompatibleStateImageBehavior = false;
             this.olvOther.UseHotItem = true;
             this.olvOther.View = System.Windows.Forms.View.Details;
+            this.olvOther.CellRightClick += new System.EventHandler<BrightIdeasSoftware.CellRightClickEventArgs>(this.OlvOther_CellRightClick);
             // 
             // olvColumnName
             // 
@@ -183,6 +184,17 @@
             this.pbCopyUsernamePassword.Click += new System.EventHandler(this.pbCopyUsernamePassword_Click);
             this.pbCopyUsernamePassword.MouseEnter += new System.EventHandler(this.pbCopyUsernamePassword_MouseEnter);
             // 
+            // lblGoogleAuth
+            // 
+            this.lblGoogleAuth.AutoSize = true;
+            this.lblGoogleAuth.Location = new System.Drawing.Point(3, 139);
+            this.lblGoogleAuth.Name = "lblGoogleAuth";
+            this.lblGoogleAuth.Size = new System.Drawing.Size(63, 13);
+            this.lblGoogleAuth.TabIndex = 17;
+            this.lblGoogleAuth.Text = "Google 2FA";
+            this.toolTip1.SetToolTip(this.lblGoogleAuth, "To use the google authenticator feature\r\nyou simply need to creat a custom field\r" +
+        "\ncalled \"Google2FA\" and save your secret\r\ninside this custom field.");
+            // 
             // rtbNotes
             // 
             this.rtbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -209,17 +221,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(383, 167);
             this.panel1.TabIndex = 15;
-            // 
-            // lblGoogleAuth
-            // 
-            this.lblGoogleAuth.AutoSize = true;
-            this.lblGoogleAuth.Location = new System.Drawing.Point(3, 139);
-            this.lblGoogleAuth.Name = "lblGoogleAuth";
-            this.lblGoogleAuth.Size = new System.Drawing.Size(63, 13);
-            this.lblGoogleAuth.TabIndex = 17;
-            this.lblGoogleAuth.Text = "Google 2FA";
-            this.toolTip1.SetToolTip(this.lblGoogleAuth, "To use the google authenticator feature\r\nyou simply need to creat a custom field\r" +
-        "\ncalled \"Google2FA\" and save your secret\r\ninside this custom field.");
             // 
             // googleTotp
             // 
