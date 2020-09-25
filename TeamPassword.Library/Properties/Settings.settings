@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="SendDelay" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">75</Value>
+      <Value Profile="(Default)">500</Value>
     </Setting>
     <Setting Name="SendWait" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SendDelayInitial" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">200</Value>
+      <Value Profile="(Default)">1000</Value>
     </Setting>
     <Setting Name="SendKeysSendReturn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
