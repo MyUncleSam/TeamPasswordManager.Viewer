@@ -31,8 +31,8 @@
             this.olvMain = new BrightIdeasSoftware.ObjectListView();
             this.olvColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnUsername = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAccess = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnEmail = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumnArchived = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.columnButtonRenderer1 = new BrightIdeasSoftware.ColumnButtonRenderer();
             this.lblFilter = new System.Windows.Forms.Label();
             this.tbFilter = new TeamPassword.Library.Controls.TextBoxFilterEx();
@@ -43,8 +43,8 @@
             // 
             this.olvMain.AllColumns.Add(this.olvColumnName);
             this.olvMain.AllColumns.Add(this.olvColumnUsername);
+            this.olvMain.AllColumns.Add(this.olvColumnAccess);
             this.olvMain.AllColumns.Add(this.olvColumnEmail);
-            this.olvMain.AllColumns.Add(this.olvColumnArchived);
             this.olvMain.AllowColumnReorder = true;
             this.olvMain.AlternateRowBackColor = System.Drawing.Color.AliceBlue;
             this.olvMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -54,8 +54,8 @@
             this.olvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnName,
             this.olvColumnUsername,
-            this.olvColumnEmail,
-            this.olvColumnArchived});
+            this.olvColumnAccess,
+            this.olvColumnEmail});
             this.olvMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvMain.EmptyListMsg = "no entries";
             this.olvMain.FullRowSelect = true;
@@ -88,7 +88,7 @@
             this.olvColumnName.IsEditable = false;
             this.olvColumnName.IsTileViewColumn = true;
             this.olvColumnName.Text = "Name";
-            this.olvColumnName.Width = 195;
+            this.olvColumnName.Width = 175;
             // 
             // olvColumnUsername
             // 
@@ -96,7 +96,15 @@
             this.olvColumnUsername.IsEditable = false;
             this.olvColumnUsername.IsTileViewColumn = true;
             this.olvColumnUsername.Text = "Username";
-            this.olvColumnUsername.Width = 202;
+            this.olvColumnUsername.Width = 175;
+            // 
+            // olvColumnAccess
+            // 
+            this.olvColumnAccess.AspectName = "access_info";
+            this.olvColumnAccess.IsEditable = false;
+            this.olvColumnAccess.IsTileViewColumn = true;
+            this.olvColumnAccess.Text = "Access";
+            this.olvColumnAccess.Width = 150;
             // 
             // olvColumnEmail
             // 
@@ -104,15 +112,7 @@
             this.olvColumnEmail.IsEditable = false;
             this.olvColumnEmail.IsTileViewColumn = true;
             this.olvColumnEmail.Text = "E-Mail";
-            this.olvColumnEmail.Width = 178;
-            // 
-            // olvColumnArchived
-            // 
-            this.olvColumnArchived.AspectName = "archived";
-            this.olvColumnArchived.CheckBoxes = true;
-            this.olvColumnArchived.IsEditable = false;
-            this.olvColumnArchived.IsTileViewColumn = true;
-            this.olvColumnArchived.Text = "Archived";
+            this.olvColumnEmail.Width = 175;
             // 
             // columnButtonRenderer1
             // 
@@ -163,7 +163,7 @@
 		private BrightIdeasSoftware.OLVColumn olvColumnName;
 		private BrightIdeasSoftware.OLVColumn olvColumnUsername;
 		private BrightIdeasSoftware.OLVColumn olvColumnEmail;
-		private BrightIdeasSoftware.OLVColumn olvColumnArchived;
+		private BrightIdeasSoftware.OLVColumn olvColumnAccess;
 		private BrightIdeasSoftware.ColumnButtonRenderer columnButtonRenderer1;
 		private System.Windows.Forms.Label lblFilter;
 		private TextBoxFilterEx tbFilter;

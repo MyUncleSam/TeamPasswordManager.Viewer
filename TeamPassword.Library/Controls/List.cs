@@ -57,16 +57,28 @@ namespace TeamPassword.Library.Controls
             miCopyUsername.Click += MiCopyUsername_Click;
             miCopyUsername.Tag = selEntry;
 
+            ToolStripMenuItem miCopyAccess = new ToolStripMenuItem("copy access");
+            miCopyAccess.Click += MiCopyAccess_Click;
+            miCopyAccess.Tag = selEntry;
+
             //ToolStripMenuItem miCopyUsernamePassword = new ToolStripMenuItem("copy username & password");
             //miCopyUsernamePassword.Click += MiCopyUsernamePassword_Click;
             //miCopyUsernamePassword.Tag = selEntry;
 
             cms.Items.Add(miCopyUsername);
             cms.Items.Add(miCopyPassword);
+            cms.Items.Add(miCopyAccess);
             //cms.Items.Add("-");
             //cms.Items.Add(miCopyUsernamePassword);
 
             e.MenuStrip = cms;
+        }
+
+        private void MiCopyAccess_Click(object sender, EventArgs e)
+        {
+            Objects.ListEntryEx selEntry = (Objects.ListEntryEx)((ToolStripMenuItem)sender).Tag;
+
+            Functions.ClipboardManager.GetInstance().SetText(selEntry.access_info);
         }
 
         private void MiCopyUsername_Click(object sender, EventArgs e)
