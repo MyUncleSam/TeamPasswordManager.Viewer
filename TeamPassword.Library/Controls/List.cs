@@ -37,6 +37,7 @@ namespace TeamPassword.Library.Controls
             //cm.MenuItems.Add(miCopyPassword);
 
             //olvMain.ContextMenu = cm;
+            SetIcons();
         }
 
         private void olvMain_CellRightClick(object sender, CellRightClickEventArgs e)
@@ -126,7 +127,7 @@ namespace TeamPassword.Library.Controls
 			}
 
 			olvMain.EmptyListMsg = oldName;
-		}
+        }
 
         public void FillList(Instance _inst, Objects.TreeNodeExType fillType)
         {
@@ -171,6 +172,26 @@ namespace TeamPassword.Library.Controls
             }
 
             olvMain.EmptyListMsg = oldName;
+        }
+
+        public void SetIcons()
+        {
+            olvArchived.AspectGetter = delegate (object x)
+            {
+                return ((Objects.ListEntryEx)x).archived;
+            };
+            olvArchived.AspectToStringConverter = delegate (object x)
+            {
+                return string.Empty;
+            };
+            olvArchived.ImageGetter = delegate (object x)
+            {
+                switch (((Objects.ListEntryEx)x).archived)
+                {
+                    case true: return "archived";
+                    default: return "";
+                }
+            };
         }
 
 		private void olvMain_SelectedIndexChanged(object sender, EventArgs e)

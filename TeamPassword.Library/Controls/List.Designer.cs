@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(List));
             this.olvMain = new BrightIdeasSoftware.ObjectListView();
             this.olvColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnUsername = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnAccess = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnEmail = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvArchived = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.ilList = new System.Windows.Forms.ImageList(this.components);
             this.columnButtonRenderer1 = new BrightIdeasSoftware.ColumnButtonRenderer();
             this.lblFilter = new System.Windows.Forms.Label();
             this.tbFilter = new TeamPassword.Library.Controls.TextBoxFilterEx();
@@ -45,6 +49,7 @@
             this.olvMain.AllColumns.Add(this.olvColumnUsername);
             this.olvMain.AllColumns.Add(this.olvColumnAccess);
             this.olvMain.AllColumns.Add(this.olvColumnEmail);
+            this.olvMain.AllColumns.Add(this.olvArchived);
             this.olvMain.AllowColumnReorder = true;
             this.olvMain.AlternateRowBackColor = System.Drawing.Color.AliceBlue;
             this.olvMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -55,11 +60,13 @@
             this.olvColumnName,
             this.olvColumnUsername,
             this.olvColumnAccess,
-            this.olvColumnEmail});
+            this.olvColumnEmail,
+            this.olvArchived});
             this.olvMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvMain.EmptyListMsg = "no entries";
             this.olvMain.FullRowSelect = true;
             this.olvMain.HideSelection = false;
+            this.olvMain.LargeImageList = this.ilList;
             this.olvMain.Location = new System.Drawing.Point(0, 26);
             this.olvMain.MultiSelect = false;
             this.olvMain.Name = "olvMain";
@@ -70,6 +77,7 @@
             this.olvMain.ShowImagesOnSubItems = true;
             this.olvMain.ShowItemToolTips = true;
             this.olvMain.Size = new System.Drawing.Size(663, 247);
+            this.olvMain.SmallImageList = this.ilList;
             this.olvMain.TabIndex = 2;
             this.olvMain.TileSize = new System.Drawing.Size(168, 56);
             this.olvMain.UnfocusedSelectedBackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -88,7 +96,7 @@
             this.olvColumnName.IsEditable = false;
             this.olvColumnName.IsTileViewColumn = true;
             this.olvColumnName.Text = "Name";
-            this.olvColumnName.Width = 175;
+            this.olvColumnName.Width = 150;
             // 
             // olvColumnUsername
             // 
@@ -96,7 +104,7 @@
             this.olvColumnUsername.IsEditable = false;
             this.olvColumnUsername.IsTileViewColumn = true;
             this.olvColumnUsername.Text = "Username";
-            this.olvColumnUsername.Width = 175;
+            this.olvColumnUsername.Width = 150;
             // 
             // olvColumnAccess
             // 
@@ -112,7 +120,22 @@
             this.olvColumnEmail.IsEditable = false;
             this.olvColumnEmail.IsTileViewColumn = true;
             this.olvColumnEmail.Text = "E-Mail";
-            this.olvColumnEmail.Width = 175;
+            this.olvColumnEmail.Width = 150;
+            // 
+            // olvArchived
+            // 
+            this.olvArchived.AspectName = "archived";
+            this.olvArchived.IsEditable = false;
+            this.olvArchived.IsTileViewColumn = true;
+            this.olvArchived.Text = "";
+            this.olvArchived.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvArchived.Width = 30;
+            // 
+            // ilList
+            // 
+            this.ilList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilList.ImageStream")));
+            this.ilList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilList.Images.SetKeyName(0, "archived");
             // 
             // columnButtonRenderer1
             // 
@@ -167,5 +190,7 @@
 		private BrightIdeasSoftware.ColumnButtonRenderer columnButtonRenderer1;
 		private System.Windows.Forms.Label lblFilter;
 		private TextBoxFilterEx tbFilter;
-	}
+        private BrightIdeasSoftware.OLVColumn olvArchived;
+        private System.Windows.Forms.ImageList ilList;
+    }
 }
